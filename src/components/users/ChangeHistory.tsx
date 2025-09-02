@@ -173,10 +173,10 @@ export default function ChangeHistory() {
 
   const getEntityTypeText = (entityType: string) => {
     switch (entityType) {
-      case 'provider': return 'Proveedor';
-      case 'product': return 'Producto';
-      case 'package': return 'Paquete';
-      case 'user': return 'Usuario';
+      case 'provider': return 'Provider';
+      case 'product': return 'Product';
+      case 'package': return 'Package';
+      case 'user': return 'User';
       case 'api-endpoint': return 'API Endpoint';
       case 'landing-page': return 'Landing Page';
       case 'ticket': return 'Ticket';

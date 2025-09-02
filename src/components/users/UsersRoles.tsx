@@ -202,7 +202,7 @@ export default function UsersRoles() {
             {[
               { id: 'users', label: 'Users', icon: Users },
               { id: 'roles', label: 'Roles', icon: Shield },
-              { id: 'history', label: 'Historial de cambios', icon: Key }
+              { id: 'history', label: 'Change History', icon: Key }
             ].map((tab) => (
               <button
                 key={tab.id}
