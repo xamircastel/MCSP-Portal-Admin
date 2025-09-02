@@ -304,7 +304,7 @@ export default function APIManager() {
         <h1 className="text-3xl font-bold text-gray-900">Gestor API</h1>
         <div className="flex items-center space-x-2 text-sm text-gray-500">
           <Code className="h-4 w-4" />
-          <span>Gestión centralizada de integraciones API</span>
+          <span>Centralized API integration management</span>
         </div>
       </div>
 
