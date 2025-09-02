@@ -47,7 +47,7 @@ const mockLandingPages: LandingPage[] = [
     id: '2',
     name: 'Proveedor 1 Pro LP',
     product: 'Timwe Pro',
-    provider: 'Proveedor 1',
+    provider: 'Provider 1',
     template: 'Gaming Theme',
     status: 'Published',
     views: 8930,
@@ -59,7 +59,7 @@ const mockLandingPages: LandingPage[] = [
     id: '3',
     name: 'Music Unlimited LP',
     product: 'Music Unlimited',
-    provider: 'Proveedor 2',
+    provider: 'Provider 2',
     template: 'Music Wave',
     status: 'Draft',
     views: 0,
@@ -78,13 +78,13 @@ const mockProviders: Provider[] = [
   },
   {
     id: '2',
-    name: 'Proveedor 1',
+    name: 'Provider 1',
     type: 'VAS',
     status: 'Active'
   },
   {
     id: '3',
-    name: 'Proveedor 2',
+    name: 'Provider 2',
     type: 'OTT',
     status: 'Active'
   }
@@ -101,14 +101,14 @@ const mockProducts: Product[] = [
   {
     id: '2',
     name: 'Timwe Pro',
-    provider: 'Proveedor 1',
+    provider: 'Provider 1',
     type: 'VAS',
     status: 'Active'
   },
   {
     id: '3',
     name: 'Music Unlimited',
-    provider: 'Proveedor 2',
+    provider: 'Provider 2',
     type: 'OTT',
     status: 'Active'
   }

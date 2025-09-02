@@ -33,8 +33,8 @@ const mockChargeEvolution = [
 
 const mockChargesByProvider = [
   { provider: 'Newry', charges: 18500, successful: 17280, failed: 1220, successRate: 93.4, amount: 980000 },
-  { provider: 'Proveedor 1', charges: 15200, successful: 14120, failed: 1080, successRate: 92.9, amount: 820000 },
-  { provider: 'Proveedor 2', charges: 11580, successful: 10750, failed: 830, successRate: 92.8, amount: 650000 }
+  { provider: 'Provider 1', charges: 15200, successful: 14120, failed: 1080, successRate: 92.9, amount: 820000 },
+  { provider: 'Provider 2', charges: 11580, successful: 10750, failed: 830, successRate: 92.8, amount: 650000 }
 ];
 
 const mockChargesByProduct = [

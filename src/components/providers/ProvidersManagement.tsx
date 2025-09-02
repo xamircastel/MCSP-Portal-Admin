@@ -24,7 +24,7 @@ const mockProviders: Provider[] = [
   },
   {
     id: '2',
-    name: 'Proveedor 1',
+    name: 'Provider 1',
     type: 'VAS',
     products: 8,
     revenue: 280000,
@@ -33,7 +33,7 @@ const mockProviders: Provider[] = [
   },
   {
     id: '3',
-    name: 'Proveedor 2',
+    name: 'Provider 2',
     type: 'OTT',
     products: 5,
     revenue: 180000,

@@ -21,7 +21,7 @@ const mockClaimsTrend = [
 const mockClaimsByProvider = [
   { provider: 'Digital Virgo', claims: 520, percentage: 41.9, trend: -5.2 },
   { provider: 'Timwe', claims: 420, percentage: 33.9, trend: -12.1 },
-  { provider: 'Renxo', claims: 300, percentage: 24.2, trend: -6.8 }
+  { provider: 'Provider 2', claims: 300, percentage: 24.2, trend: -6.8 }
 ];
 
 const mockClaimsByCategory = [

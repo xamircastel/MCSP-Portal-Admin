@@ -27,7 +27,7 @@ const mockRevenueData: RevenueData[] = [
   },
   {
     id: '2',
-    provider: 'Proveedor 1',
+    provider: 'Provider 1',
     product: 'Timwe Pro',
     totalRevenue: 44560,
     revenueShare: 65,
@@ -38,7 +38,7 @@ const mockRevenueData: RevenueData[] = [
   },
   {
     id: '3',
-    provider: 'Proveedor 2',
+    provider: 'Provider 2',
     product: 'Music Unlimited',
     totalRevenue: 25890,
     revenueShare: 75,

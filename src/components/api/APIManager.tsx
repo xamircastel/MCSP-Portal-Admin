@@ -72,7 +72,7 @@ const mockEndpoints: APIEndpoint[] = [
   },
   {
     id: '3',
-    provider: 'Proveedor 1',
+    provider: 'Provider 1',
     type: 'subscription',
     url: 'https://api.provider1.com/notifications/subscription',
     method: 'POST',
@@ -81,7 +81,7 @@ const mockEndpoints: APIEndpoint[] = [
   },
   {
     id: '4',
-    provider: 'Proveedor 1',
+    provider: 'Provider 1',
     type: 'mo',
     url: 'https://api.provider1.com/notifications/mo',
     method: 'POST',
@@ -102,7 +102,7 @@ const mockCredentials: APICredential[] = [
   },
   {
     id: '2',
-    provider: 'Proveedor 1',
+    provider: 'Provider 1',
     apiKey: 'mscp_live_42K9ghi789jkl012...',
     secretKey: 'mscp_secret_42K9mno345pqr678...',
     createdAt: '2024-02-20',
@@ -191,7 +191,7 @@ const mockContentPortals: ContentPortal[] = [
   },
   {
     id: '2',
-    provider: 'Proveedor 1',
+    provider: 'Provider 1',
     product: 'Gaming Plus Pro',
     portalType: 'Web Portal',
     url: 'https://games.provider1.com/pro',
@@ -200,7 +200,7 @@ const mockContentPortals: ContentPortal[] = [
   },
   {
     id: '3',
-    provider: 'Proveedor 2',
+    provider: 'Provider 2',
     product: 'Music Unlimited',
     portalType: 'Application',
     fileName: 'provider2-music-v2.1.apk',
@@ -218,13 +218,13 @@ const mockProviders: Provider[] = [
   },
   {
     id: '2',
-    name: 'Proveedor 1',
+    name: 'Provider 1',
     type: 'VAS',
     status: 'Active'
   },
   {
     id: '3',
-    name: 'Proveedor 2',
+    name: 'Provider 2',
     type: 'OTT',
     status: 'Active'
   }

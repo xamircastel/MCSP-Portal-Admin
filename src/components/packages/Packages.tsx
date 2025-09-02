@@ -37,14 +37,14 @@ const mockProducts: Product[] = [
   {
     id: '2',
     name: 'Gaming Plus Pro',
-    provider: 'Proveedor 1',
+    provider: 'Provider 1',
     type: 'VAS',
     status: 'Active'
   },
   {
     id: '3',
     name: 'Music Unlimited',
-    provider: 'Proveedor 2',
+    provider: 'Provider 2',
     type: 'OTT',
     status: 'Active'
   },

@@ -46,7 +46,7 @@ const mockUserData: Record<string, UserInfo> = {
       {
         id: '3',
         productName: 'Music Unlimited',
-        providerName: 'Renxo',
+        providerName: 'Provider 2',
         contractDate: '2024-03-01',
         serviceType: 'On-demand',
         status: 'Activa',

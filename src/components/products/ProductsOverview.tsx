@@ -36,7 +36,7 @@ const mockProducts: Product[] = [
   {
     id: '2',
     name: 'Gaming Plus Pro',
-    provider: 'Proveedor 1',
+    provider: 'Provider 1',
     type: 'VAS',
     serviceType: 'Subscription',
     price: 4.99,
@@ -47,7 +47,7 @@ const mockProducts: Product[] = [
   {
     id: '3',
     name: 'Music Unlimited',
-    provider: 'Proveedor 2',
+    provider: 'Provider 2',
     type: 'OTT',
     serviceType: 'Subscription',
     price: 7.99,
@@ -66,13 +66,13 @@ const mockProviders: Provider[] = [
   },
   {
     id: '2',
-    name: 'Proveedor 1',
+    name: 'Provider 1',
     type: 'VAS',
     status: 'Active'
   },
   {
     id: '3',
-    name: 'Proveedor 2',
+    name: 'Provider 2',
     type: 'OTT',
     status: 'Active'
   }
