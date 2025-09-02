@@ -70,13 +70,13 @@ export default function ReportFilters({ type, onFiltersChange, dateRange, onDate
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <Filter className="h-5 w-5 text-gray-400" />
-            <h3 className="text-lg font-medium text-gray-900">Filtros</h3>
+            <h3 className="text-lg font-medium text-gray-900">Filters</h3>
           </div>
           <button
             onClick={() => setIsExpanded(!isExpanded)}
             className="text-sm text-green-600 hover:text-green-700"
           >
-            {isExpanded ? 'Ocultar Filtros' : 'Mostrar Filtros'}
+            {isExpanded ? 'Hide Filters' : 'Show Filters'}
           </button>
         </div>
       </div>
