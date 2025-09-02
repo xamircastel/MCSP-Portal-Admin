@@ -313,9 +313,9 @@ export default function APIManager() {
         <div className="border-b border-gray-200">
           <nav className="flex space-x-8 px-6">
             {[
-              { id: 'endpoints', label: 'API Endpoints', icon: Code, description: 'Notificaciones Outbound' },
-              { id: 'credentials', label: 'Credenciales', icon: Key, description: 'APIs Expuestas por MSCP' },
-              { id: 'portals', label: 'Content Portals', icon: Globe, description: 'Gestión de Contenido' }
+              { id: 'endpoints', label: 'API Endpoints', icon: Code, description: 'Outbound Notifications' },
+              { id: 'credentials', label: 'Credentials', icon: Key, description: 'APIs Exposed by MSCP' },
+              { id: 'portals', label: 'Content Portals', icon: Globe, description: 'Content Management' }
             ].map((tab) => (
               <button
                 key={tab.id}
