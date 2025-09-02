@@ -30,28 +30,28 @@ const mockProducts: Product[] = [
   {
     id: '1',
     name: 'Premium Streaming',
-    provider: 'Digital Virgo',
+    provider: 'Newry',
     type: 'OTT',
     status: 'Active'
   },
   {
     id: '2',
     name: 'Gaming Plus Pro',
-    provider: 'Timwe',
+    provider: 'Proveedor 1',
     type: 'VAS',
     status: 'Active'
   },
   {
     id: '3',
     name: 'Music Unlimited',
-    provider: 'Renxo',
+    provider: 'Proveedor 2',
     type: 'OTT',
     status: 'Active'
   },
   {
     id: '4',
     name: 'News Premium',
-    provider: 'Digital Virgo',
+    provider: 'Newry',
     type: 'VAS',
     status: 'Active'
   },
@@ -89,7 +89,7 @@ const mockPackages: PackageItem[] = [
   },
   {
     id: '2',
-    name: 'Digital Virgo Complete',
+    name: 'Newry Complete',
     baseProduct: mockProducts[0], // Premium Streaming
     complementaryProducts: [mockProducts[3]], // News Premium
     price: 19.99,
@@ -192,9 +192,9 @@ export default function Packages() {
               onClick={() => setViewMode('list')}
               className="text-green-600 hover:text-green-700 font-medium"
             >
-              ← Volver al listado
+              ← Back to list
             </button>
-            <h1 className="text-3xl font-bold text-gray-900">Detalle del Paquete</h1>
+            <h1 className="text-3xl font-bold text-gray-900">Package Details</h1>
           </div>
           <div className="flex items-center space-x-2">
             <span className={`inline-flex items-center px-3 py-1 text-sm font-semibold rounded-full ${getStatusColor(selectedPackage.status)}`}>
@@ -210,13 +210,13 @@ export default function Packages() {
             <h2 className="text-2xl font-bold text-gray-900">{selectedPackage.name}</h2>
             <div className="text-right">
               <p className="text-3xl font-bold text-green-600">${selectedPackage.price}</p>
-              <p className="text-sm text-gray-500">Precio del paquete</p>
+              <p className="text-sm text-gray-500">Package price</p>
             </div>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-600">
             <div>
-              <span className="font-medium">Fecha de creación:</span>
+              <span className="font-medium">Creation date:</span>
               <p className="text-gray-900">{selectedPackage.createdAt}</p>
             </div>
             <div>
@@ -224,7 +224,7 @@ export default function Packages() {
               <p className="text-gray-900">{selectedPackage.ticketId}</p>
             </div>
             <div>
-              <span className="font-medium">Estado:</span>
+              <span className="font-medium">Status:</span>
               <p className="text-gray-900">{selectedPackage.status}</p>
             </div>
           </div>
@@ -234,15 +234,15 @@ export default function Packages() {
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <h3 className="text-lg font-medium text-gray-900 mb-4 flex items-center">
             <Package className="h-5 w-5 mr-2 text-green-600" />
-            Producto Base
+            Base Product
           </h3>
           <div className="bg-green-50 border border-green-200 rounded-lg p-4">
             <div className="flex items-center justify-between">
               <div>
                 <h4 className="text-lg font-medium text-gray-900">{selectedPackage.baseProduct.name}</h4>
-                <p className="text-sm text-gray-600">Proveedor: {selectedPackage.baseProduct.provider}</p>
+                <p className="text-sm text-gray-600">Provider: {selectedPackage.baseProduct.provider}</p>
                 <p className="text-xs text-gray-500 mt-2">
-                  Este producto define la lógica de flujos de negocio para todo el paquete
+                  This product defines the business flow logic for the entire package
                 </p>
               </div>
               <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getProductTypeColor(selectedPackage.baseProduct.type)}`}>
@@ -256,7 +256,7 @@ export default function Packages() {
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <h3 className="text-lg font-medium text-gray-900 mb-4 flex items-center">
             <Package className="h-5 w-5 mr-2 text-blue-600" />
-            Productos Complementarios ({selectedPackage.complementaryProducts.length})
+            Complementary Products ({selectedPackage.complementaryProducts.length})
           </h3>
           <div className="space-y-3">
             {selectedPackage.complementaryProducts.map((product, index) => (
@@ -264,7 +264,7 @@ export default function Packages() {
                 <div className="flex items-center justify-between">
                   <div>
                     <h4 className="text-md font-medium text-gray-900">{product.name}</h4>
-                    <p className="text-sm text-gray-600">Proveedor: {product.provider}</p>
+                    <p className="text-sm text-gray-600">Provider: {product.provider}</p>
                   </div>
                   <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getProductTypeColor(product.type)}`}>
                     {product.type}
@@ -280,18 +280,18 @@ export default function Packages() {
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
             <h3 className="text-lg font-medium text-gray-900 mb-4 flex items-center">
               <Package className="h-5 w-5 mr-2 text-orange-600" />
-              Servicios de Telecomunicaciones
+              Telecommunications Services
             </h3>
             <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-orange-600">📱</div>
-                  <p className="text-sm font-medium text-gray-700">Datos Móviles</p>
+                  <p className="text-sm font-medium text-gray-700">Mobile Data</p>
                   <p className="text-lg font-bold text-gray-900">{selectedPackage.telcoServices.data}</p>
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-orange-600">📞</div>
-                  <p className="text-sm font-medium text-gray-700">Minutos de Voz</p>
+                  <p className="text-sm font-medium text-gray-700">Voice Minutes</p>
                   <p className="text-lg font-bold text-gray-900">{selectedPackage.telcoServices.voice}</p>
                 </div>
                 <div className="text-center">
@@ -302,7 +302,7 @@ export default function Packages() {
               </div>
               <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
                 <p className="text-sm text-yellow-800">
-                  <strong>Nota:</strong> Los servicios de telecomunicaciones están sujetos a acuerdos técnicos y comerciales con la Operadora Móvil (MNO).
+                  <strong>Note:</strong> Telecommunications services are subject to technical and commercial agreements with the Mobile Network Operator (MNO).
                 </p>
               </div>
             </div>
@@ -316,12 +316,12 @@ export default function Packages() {
               <AlertCircle className="h-5 w-5 text-yellow-600 mt-0.5 mr-3" />
               <div>
                 <h3 className="text-sm font-medium text-yellow-800">
-                  Paquete Pendiente de Configuración
+                  Package Pending Configuration
                 </h3>
                 <p className="text-sm text-yellow-700 mt-1">
-                  Este paquete ha sido enviado al equipo de soporte central para su configuración manual. 
-                  El ticket <strong>{selectedPackage.ticketId}</strong> contiene toda la información necesaria 
-                  para proceder con la activación según los acuerdos comerciales establecidos.
+                  This package has been sent to the central support team for manual configuration. 
+                  Ticket <strong>{selectedPackage.ticketId}</strong> contains all necessary information 
+                  to proceed with activation according to established commercial agreements.
                 </p>
               </div>
             </div>
@@ -334,18 +334,18 @@ export default function Packages() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold text-gray-900">Paquetes Comerciales</h1>
+        <h1 className="text-3xl font-bold text-gray-900">Commercial Packages</h1>
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-2 text-sm text-gray-500">
             <Package className="h-4 w-4" />
-            <span>{packages.length} paquetes totales</span>
+            <span>{packages.length} total packages</span>
           </div>
           <button
             onClick={() => setIsModalOpen(true)}
             className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center space-x-2"
           >
             <Plus className="h-4 w-4" />
-            <span>Crear Paquete</span>
+            <span>Create Package</span>
           </button>
         </div>
       </div>
@@ -356,13 +356,13 @@ export default function Packages() {
           <AlertCircle className="h-5 w-5 text-blue-600 mt-0.5 mr-3" />
           <div>
             <h3 className="text-sm font-medium text-blue-800">
-              Información sobre Paquetes Comerciales
+              Commercial Package Information
             </h3>
             <p className="text-sm text-blue-700 mt-1">
-              Los paquetes combinan múltiples productos para crear ofertas comerciales unificadas. 
-              Cada paquete requiere un <strong>producto base</strong> que define la lógica de negocio, 
-              y puede incluir <strong>productos complementarios</strong> y servicios de telecomunicaciones 
-              sujetos a acuerdos con la MNO.
+              Packages combine multiple products to create unified commercial offers. 
+              Each package requires a <strong>base product</strong> that defines the business logic, 
+              and can include <strong>complementary products</strong> and telecommunications services 
+              subject to agreements with the MNO.
             </p>
           </div>
         </div>
@@ -373,7 +373,7 @@ export default function Packages() {
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Total Paquetes</p>
+              <p className="text-sm font-medium text-gray-600">Total Packages</p>
               <p className="text-2xl font-bold text-gray-900">{packages.length}</p>
             </div>
             <div className="p-3 rounded-lg bg-blue-50 text-blue-600">
@@ -385,7 +385,7 @@ export default function Packages() {
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Paquetes Activos</p>
+              <p className="text-sm font-medium text-gray-600">Active Packages</p>
               <p className="text-2xl font-bold text-gray-900">
                 {packages.filter(p => p.status === 'Active').length}
               </p>
@@ -399,7 +399,7 @@ export default function Packages() {
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Pendientes</p>
+              <p className="text-sm font-medium text-gray-600">Pending</p>
               <p className="text-2xl font-bold text-gray-900">
                 {packages.filter(p => p.status === 'Pending').length}
               </p>
@@ -413,7 +413,7 @@ export default function Packages() {
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Precio Promedio</p>
+              <p className="text-sm font-medium text-gray-600">Average Price</p>
               <p className="text-2xl font-bold text-gray-900">
                 ${(packages.reduce((sum, p) => sum + p.price, 0) / packages.length || 0).toFixed(2)}
               </p>
@@ -433,7 +433,7 @@ export default function Packages() {
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
                 <input
                   type="text"
-                  placeholder="Buscar paquetes..."
+                  placeholder="Search packages..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
@@ -475,7 +475,7 @@ export default function Packages() {
                 <tr key={pkg.id} className="hover:bg-gray-50">
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="font-medium text-gray-900">{pkg.name}</div>
-                    <div className="text-sm text-gray-500">Creado: {pkg.createdAt}</div>
+                    <div className="text-sm text-gray-500">Created: {pkg.createdAt}</div>
                     {pkg.ticketId && (
                       <div className="text-xs text-blue-600">Ticket: {pkg.ticketId}</div>
                     )}
@@ -489,7 +489,7 @@ export default function Packages() {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="text-sm text-gray-900">
-                      {pkg.complementaryProducts.length} producto{pkg.complementaryProducts.length !== 1 ? 's' : ''}
+                      {pkg.complementaryProducts.length} product{pkg.complementaryProducts.length !== 1 ? 's' : ''}
                     </div>
                     <div className="text-xs text-gray-500">
                       {pkg.complementaryProducts.slice(0, 2).map(p => p.name).join(', ')}
@@ -504,7 +504,7 @@ export default function Packages() {
                         <div>💬 {pkg.telcoServices.sms}</div>
                       </div>
                     ) : (
-                      <span className="text-gray-400">Sin servicios</span>
+                      <span className="text-gray-400">No services</span>
                     )}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 font-medium">
@@ -518,25 +518,25 @@ export default function Packages() {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                     <div className="flex items-center justify-end space-x-2">
-                      <button 
+                    Package
                         onClick={() => handleView(pkg)}
                         className="text-gray-400 hover:text-gray-600"
-                      >
+                    Base Product
                         <Eye className="h-4 w-4" />
                       </button>
-                      <button 
+                    Complementary Products
                         onClick={() => handleEdit(pkg)}
                         className="text-gray-400 hover:text-blue-600"
-                      >
+                    Telco Services
                         <Edit className="h-4 w-4" />
                       </button>
-                      <button 
+                    Price
                         onClick={() => handleDelete(pkg.id)}
                         className="text-gray-400 hover:text-red-600"
-                      >
+                    Status
                         <Trash2 className="h-4 w-4" />
                       </button>
-                    </div>
+                    Actions
                   </td>
                 </tr>
               ))}

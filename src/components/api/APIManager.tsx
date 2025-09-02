@@ -54,46 +54,46 @@ interface Provider {
 const mockEndpoints: APIEndpoint[] = [
   {
     id: '1',
-    provider: 'Digital Virgo',
+    provider: 'Newry',
     type: 'subscription',
-    url: 'https://api.digitalvirgo.com/v1/notifications/subscription',
+    url: 'https://api.newry.com/v1/notifications/subscription',
     method: 'POST',
     status: 'Active',
-    description: 'Notificación de alta de suscripción'
+    description: 'Subscription activation notification'
   },
   {
     id: '2',
-    provider: 'Digital Virgo',
+    provider: 'Newry',
     type: 'charge',
-    url: 'https://api.digitalvirgo.com/v1/notifications/charge',
+    url: 'https://api.newry.com/v1/notifications/charge',
     method: 'POST',
     status: 'Active',
-    description: 'Notificación de cobro exitoso'
+    description: 'Successful charge notification'
   },
   {
     id: '3',
-    provider: 'Timwe',
+    provider: 'Proveedor 1',
     type: 'subscription',
-    url: 'https://api.timwe.com/notifications/subscription',
+    url: 'https://api.provider1.com/notifications/subscription',
     method: 'POST',
     status: 'Active',
-    description: 'Notificación de alta de suscripción'
+    description: 'Subscription activation notification'
   },
   {
     id: '4',
-    provider: 'Timwe',
+    provider: 'Proveedor 1',
     type: 'mo',
-    url: 'https://api.timwe.com/notifications/mo',
+    url: 'https://api.provider1.com/notifications/mo',
     method: 'POST',
     status: 'Active',
-    description: 'Notificación de MO (Mobile Originated)'
+    description: 'MO (Mobile Originated) notification'
   }
 ];
 
 const mockCredentials: APICredential[] = [
   {
     id: '1',
-    provider: 'Digital Virgo',
+    provider: 'Newry',
     apiKey: 'mscp_live_51H7abc123def456...',
     secretKey: 'mscp_secret_51H7xyz789uvw012...',
     createdAt: '2024-01-15',
@@ -102,7 +102,7 @@ const mockCredentials: APICredential[] = [
   },
   {
     id: '2',
-    provider: 'Timwe',
+    provider: 'Proveedor 1',
     apiKey: 'mscp_live_42K9ghi789jkl012...',
     secretKey: 'mscp_secret_42K9mno345pqr678...',
     createdAt: '2024-02-20',
@@ -114,66 +114,66 @@ const mockCredentials: APICredential[] = [
 const mockMSCPApis: MSCPApi[] = [
   {
     id: '1',
-    name: 'API de Envío de SMS',
-    description: 'Permite a un CP solicitar el envío de un SMS a un usuario final',
+    name: 'SMS Sending API',
+    description: 'Allows a CP to request sending an SMS to an end user',
     endpoint: '/api/v1/sms/send',
     method: 'POST',
     useCases: [
-      'Envío de notificaciones promocionales',
-      'Confirmaciones de transacciones',
-      'Códigos de verificación'
+      'Sending promotional notifications',
+      'Transaction confirmations',
+      'Verification codes'
     ],
     status: 'Available'
   },
   {
     id: '2',
-    name: 'API de Cobro (On-Demand)',
-    description: 'Permite a un CP solicitar un cobro único a un usuario',
+    name: 'Charge API (On-Demand)',
+    description: 'Allows a CP to request a one-time charge to a user',
     endpoint: '/api/v1/charge/ondemand',
     method: 'POST',
     useCases: [
-      'Servicios de pago por evento (Oneshot)',
-      'Compras desde portal del CP',
-      'Webhooks de backend del CP'
+      'Pay-per-event services (Oneshot)',
+      'Purchases from CP portal',
+      'CP backend webhooks'
     ],
     status: 'Available'
   },
   {
     id: '3',
-    name: 'API de Suscripción',
-    description: 'Permite solicitar la activación de una suscripción para un usuario',
+    name: 'Subscription API',
+    description: 'Allows requesting subscription activation for a user',
     endpoint: '/api/v1/subscription/activate',
     method: 'POST',
     useCases: [
-      'CPs con Landing Pages propias',
-      'Integración con canales MNO',
-      'Apps Mi Operadora'
+      'CPs with their own Landing Pages',
+      'Integration with MNO channels',
+      'My Operator Apps'
     ],
     status: 'Available'
   },
   {
     id: '4',
-    name: 'API de Cancelación',
-    description: 'Permite solicitar la cancelación de una suscripción activa',
+    name: 'Cancellation API',
+    description: 'Allows requesting cancellation of an active subscription',
     endpoint: '/api/v1/subscription/cancel',
     method: 'POST',
     useCases: [
-      'Portales de contenido del CP',
-      'Sistemas de atención al cliente',
-      'Canales propios de MNO'
+      'CP content portals',
+      'Customer service systems',
+      'MNO own channels'
     ],
     status: 'Available'
   },
   {
     id: '5',
-    name: 'API de Customer Care',
-    description: 'Expone información de servicios digitales de un usuario',
+    name: 'Customer Care API',
+    description: 'Exposes digital service information for a user',
     endpoint: '/api/v1/customer/info',
     method: 'GET',
     useCases: [
-      'Consulta de suscripciones activas',
-      'Integración con plataformas MNO',
-      'Sistemas de atención al cliente'
+      'Active subscription queries',
+      'Integration with MNO platforms',
+      'Customer service systems'
     ],
     status: 'Available'
   }
@@ -182,29 +182,29 @@ const mockMSCPApis: MSCPApi[] = [
 const mockContentPortals: ContentPortal[] = [
   {
     id: '1',
-    provider: 'Digital Virgo',
+    provider: 'Newry',
     product: 'Premium Streaming',
     portalType: 'Web Portal',
-    url: 'https://portal.digitalvirgo.com/streaming',
-    description: 'Portal de contenido de streaming premium',
+    url: 'https://portal.newry.com/streaming',
+    description: 'Premium streaming content portal',
     status: 'Active'
   },
   {
     id: '2',
-    provider: 'Timwe',
+    provider: 'Proveedor 1',
     product: 'Gaming Plus Pro',
     portalType: 'Web Portal',
-    url: 'https://games.timwe.com/pro',
-    description: 'Portal de juegos premium',
+    url: 'https://games.provider1.com/pro',
+    description: 'Premium gaming portal',
     status: 'Active'
   },
   {
     id: '3',
-    provider: 'Renxo',
+    provider: 'Proveedor 2',
     product: 'Music Unlimited',
     portalType: 'Application',
-    fileName: 'renxo-music-v2.1.apk',
-    description: 'Aplicación móvil de música',
+    fileName: 'provider2-music-v2.1.apk',
+    description: 'Mobile music application',
     status: 'Active'
   }
 ];
@@ -212,19 +212,19 @@ const mockContentPortals: ContentPortal[] = [
 const mockProviders: Provider[] = [
   {
     id: '1',
-    name: 'Digital Virgo',
+    name: 'Newry',
     type: 'OTT',
     status: 'Active'
   },
   {
     id: '2',
-    name: 'Timwe',
+    name: 'Proveedor 1',
     type: 'VAS',
     status: 'Active'
   },
   {
     id: '3',
-    name: 'Renxo',
+    name: 'Proveedor 2',
     type: 'OTT',
     status: 'Active'
   }
@@ -267,9 +267,9 @@ export default function APIManager() {
 
   const getEventTypeText = (type: string) => {
     switch (type) {
-      case 'subscription': return 'Alta de Suscripción';
-      case 'charge': return 'Cobro Exitoso';
-      case 'cancellation': return 'Cancelación';
+      case 'subscription': return 'Subscription Activation';
+      case 'charge': return 'Successful Charge';
+      case 'cancellation': return 'Cancellation';
       case 'mo': return 'MO (Mobile Originated)';
       default: return type;
     }

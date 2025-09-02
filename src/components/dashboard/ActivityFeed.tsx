@@ -6,7 +6,7 @@ export default function ActivityFeed() {
     {
       id: 1,
       type: 'provider',
-      message: 'New provider "Digital Virgo" added',
+      message: 'New provider "Newry" added',
       user: 'Admin User',
       time: '2 minutes ago',
       icon: User,
@@ -16,7 +16,7 @@ export default function ActivityFeed() {
     {
       id: 2,
       type: 'product',
-      message: 'Product "Timwe" updated',
+      message: 'Product "Provider 1" updated',
       user: 'Manager User',
       time: '15 minutes ago',
       icon: Package,
@@ -36,7 +36,7 @@ export default function ActivityFeed() {
     {
       id: 4,
       type: 'revenue',
-      message: 'Provider "Digital Virgo" revenue updated',
+      message: 'Provider "Newry" revenue updated',
       user: 'System',
       time: '2 hours ago',
       icon: TrendingUp,

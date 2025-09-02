@@ -16,7 +16,7 @@ interface RevenueData {
 const mockRevenueData: RevenueData[] = [
   {
     id: '1',
-    provider: 'Digital Virgo',
+    provider: 'Newry',
     product: 'Premium Streaming',
     totalRevenue: 153780,
     revenueShare: 70,
@@ -27,7 +27,7 @@ const mockRevenueData: RevenueData[] = [
   },
   {
     id: '2',
-    provider: 'Timwe',
+    provider: 'Proveedor 1',
     product: 'Timwe Pro',
     totalRevenue: 44560,
     revenueShare: 65,
@@ -38,7 +38,7 @@ const mockRevenueData: RevenueData[] = [
   },
   {
     id: '3',
-    provider: 'Renxo',
+    provider: 'Proveedor 2',
     product: 'Music Unlimited',
     totalRevenue: 25890,
     revenueShare: 75,

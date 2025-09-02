@@ -1,28 +1,70 @@
 import React, { useState } from 'react';
-import { DollarSign, TrendingUp, Users, BarChart3, Calendar, Filter, Download } from 'lucide-react';
+import { CreditCard, TrendingUp, Calendar, Download, DollarSign, Users, BarChart3, AlertTriangle } from 'lucide-react';
 import ReportFilters from './ReportFilters';
 
-interface FinancialMetrics {
-  totalRevenue: number;
-  roi: number;
-  arpu: number;
-  revenueGrowth: number;
+interface ChargeMetrics {
+  totalCharges: number;
+  successfulCharges: number;
+  failedCharges: number;
+  chargeGrowth: number;
+  successRate: number;
+  totalAmount: number;
+  avgChargeAmount: number;
 }
 
-const mockFinancialData: FinancialMetrics = {
-  totalRevenue: 2450000,
-  roi: 185.5,
-  arpu: 24.50,
-  revenueGrowth: 12.3
+const mockChargeData: ChargeMetrics = {
+  totalCharges: 45280,
+  successfulCharges: 42150,
+  failedCharges: 3130,
+  chargeGrowth: 8.5,
+  successRate: 93.1,
+  totalAmount: 2450000,
+  avgChargeAmount: 54.12
 };
 
-const mockRevenueData = [
-  { month: 'Ene', revenue: 180000, roi: 165, arpu: 22.5 },
-  { month: 'Feb', revenue: 220000, roi: 172, arpu: 23.1 },
-  { month: 'Mar', revenue: 190000, roi: 158, arpu: 21.8 },
-  { month: 'Abr', revenue: 250000, roi: 178, arpu: 24.2 },
-  { month: 'May', revenue: 280000, roi: 185, arpu: 25.1 },
-  { month: 'Jun', revenue: 240000, roi: 180, arpu: 24.0 }
+const mockChargeEvolution = [
+  { month: 'Jan', total: 6800, successful: 6350, failed: 450, amount: 380000 },
+  { month: 'Feb', total: 7200, successful: 6720, failed: 480, amount: 420000 },
+  { month: 'Mar', total: 6900, successful: 6440, failed: 460, amount: 390000 },
+  { month: 'Apr', total: 7800, successful: 7280, failed: 520, amount: 450000 },
+  { month: 'May', total: 8200, successful: 7650, failed: 550, amount: 480000 },
+  { month: 'Jun', total: 8380, successful: 7760, failed: 620, amount: 530000 }
+];
+
+const mockChargesByProvider = [
+  { provider: 'Newry', charges: 18500, successful: 17280, failed: 1220, successRate: 93.4, amount: 980000 },
+  { provider: 'Proveedor 1', charges: 15200, successful: 14120, failed: 1080, successRate: 92.9, amount: 820000 },
+  { provider: 'Proveedor 2', charges: 11580, successful: 10750, failed: 830, successRate: 92.8, amount: 650000 }
+];
+
+const mockChargesByProduct = [
+  { product: 'Premium Streaming', provider: 'Newry', charges: 12800, amount: 680000, avgAmount: 53.13 },
+  { product: 'Gaming Plus Pro', provider: 'Proveedor 1', charges: 9200, amount: 420000, avgAmount: 45.65 },
+  { product: 'Music Unlimited', provider: 'Proveedor 2', charges: 8500, amount: 380000, avgAmount: 44.71 },
+  { product: 'Video Pro', provider: 'Newry', charges: 7800, amount: 350000, avgAmount: 44.87 },
+  { product: 'Book Library', provider: 'Proveedor 1', charges: 6980, amount: 320000, avgAmount: 45.84 }
+];
+
+const mockChargesByType = [
+  { type: 'Subscription Charges', charges: 28500, percentage: 62.9, color: 'bg-blue-500', amount: 1540000 },
+  { type: 'Renewal Charges', charges: 12800, percentage: 28.3, color: 'bg-green-500', amount: 690000 },
+  { type: 'On-Demand Charges', charges: 3980, percentage: 8.8, color: 'bg-purple-500', amount: 220000 }
+];
+
+const mockChargesByChannel = [
+  { channel: 'HE (Header Enrichment)', charges: 18500, percentage: 40.9, successRate: 94.2 },
+  { channel: 'WIFI', charges: 12800, percentage: 28.3, successRate: 91.8 },
+  { channel: 'SMS', charges: 8200, percentage: 18.1, successRate: 89.5 },
+  { channel: 'SAT PUSH', charges: 3980, percentage: 8.8, successRate: 95.1 },
+  { channel: 'USSD', charges: 1800, percentage: 4.0, successRate: 87.3 }
+];
+
+const mockFailureReasons = [
+  { reason: 'Insufficient Balance', count: 1420, percentage: 45.4 },
+  { reason: 'User Blocked', count: 680, percentage: 21.7 },
+  { reason: 'Network Error', count: 520, percentage: 16.6 },
+  { reason: 'Invalid User', count: 310, percentage: 9.9 },
+  { reason: 'Service Unavailable', count: 200, percentage: 6.4 }
 ];
 
 export default function FinancialReport() {
@@ -32,16 +74,16 @@ export default function FinancialReport() {
     endDate: '2024-06-30'
   });
 
-  const maxRevenue = Math.max(...mockRevenueData.map(d => d.revenue));
+  const maxCharges = Math.max(...mockChargeEvolution.map(d => d.total));
 
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold text-gray-900">Ingresos y KPIs Financieros</h1>
+        <h1 className="text-3xl font-bold text-gray-900">Charges Report</h1>
         <div className="flex items-center space-x-4">
           <button className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center space-x-2">
             <Download className="h-4 w-4" />
-            <span>Exportar</span>
+            <span>Export Report</span>
           </button>
         </div>
       </div>
@@ -54,147 +96,352 @@ export default function FinancialReport() {
         onDateRangeChange={setDateRange}
       />
 
-      {/* KPI Cards */}
+      {/* Charge Metrics Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Ingresos Totales</p>
+              <p className="text-sm font-medium text-gray-600">Total Charges</p>
               <p className="text-2xl font-bold text-gray-900">
-                ${mockFinancialData.totalRevenue.toLocaleString()}
+                {mockChargeData.totalCharges.toLocaleString()}
+              </p>
+            </div>
+            <div className="p-3 rounded-lg bg-blue-50 text-blue-600">
+              <CreditCard className="h-6 w-6" />
+            </div>
+          </div>
+          <div className="mt-4 flex items-center">
+            <TrendingUp className="h-4 w-4 text-green-500 mr-1" />
+            <span className="text-sm font-medium text-green-600">+{mockChargeData.chargeGrowth}%</span>
+            <span className="text-sm text-gray-500 ml-1">vs last month</span>
+          </div>
+        </div>
+
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm font-medium text-gray-600">Successful Charges</p>
+              <p className="text-2xl font-bold text-gray-900">
+                {mockChargeData.successfulCharges.toLocaleString()}
               </p>
             </div>
             <div className="p-3 rounded-lg bg-green-50 text-green-600">
-              <DollarSign className="h-6 w-6" />
-            </div>
-          </div>
-          <div className="mt-4 flex items-center">
-            <TrendingUp className="h-4 w-4 text-green-500 mr-1" />
-            <span className="text-sm font-medium text-green-600">+{mockFinancialData.revenueGrowth}%</span>
-            <span className="text-sm text-gray-500 ml-1">vs mes anterior</span>
-          </div>
-        </div>
-
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm font-medium text-gray-600">ROI</p>
-              <p className="text-2xl font-bold text-gray-900">{mockFinancialData.roi}%</p>
-            </div>
-            <div className="p-3 rounded-lg bg-blue-50 text-blue-600">
               <TrendingUp className="h-6 w-6" />
             </div>
           </div>
-          <div className="mt-4 flex items-center">
-            <TrendingUp className="h-4 w-4 text-green-500 mr-1" />
-            <span className="text-sm font-medium text-green-600">+8.2%</span>
-            <span className="text-sm text-gray-500 ml-1">vs mes anterior</span>
+          <div className="mt-4">
+            <span className="text-sm text-gray-500">Success Rate: {mockChargeData.successRate}%</span>
           </div>
         </div>
 
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">ARPU</p>
-              <p className="text-2xl font-bold text-gray-900">${mockFinancialData.arpu}</p>
+              <p className="text-sm font-medium text-gray-600">Failed Charges</p>
+              <p className="text-2xl font-bold text-gray-900">
+                {mockChargeData.failedCharges.toLocaleString()}
+              </p>
             </div>
-            <div className="p-3 rounded-lg bg-purple-50 text-purple-600">
-              <Users className="h-6 w-6" />
-            </div>
-          </div>
-          <div className="mt-4 flex items-center">
-            <TrendingUp className="h-4 w-4 text-green-500 mr-1" />
-            <span className="text-sm font-medium text-green-600">+5.1%</span>
-            <span className="text-sm text-gray-500 ml-1">vs mes anterior</span>
-          </div>
-        </div>
-
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm font-medium text-gray-600">Crecimiento</p>
-              <p className="text-2xl font-bold text-gray-900">+{mockFinancialData.revenueGrowth}%</p>
-            </div>
-            <div className="p-3 rounded-lg bg-orange-50 text-orange-600">
-              <BarChart3 className="h-6 w-6" />
+            <div className="p-3 rounded-lg bg-red-50 text-red-600">
+              <AlertTriangle className="h-6 w-6" />
             </div>
           </div>
           <div className="mt-4">
-            <span className="text-sm text-gray-500">Tendencia mensual</span>
+            <span className="text-sm text-gray-500">Failure Rate: {(100 - mockChargeData.successRate).toFixed(1)}%</span>
+          </div>
+        </div>
+
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm font-medium text-gray-600">Total Amount</p>
+              <p className="text-2xl font-bold text-gray-900">
+                ${mockChargeData.totalAmount.toLocaleString()}
+              </p>
+            </div>
+            <div className="p-3 rounded-lg bg-purple-50 text-purple-600">
+              <DollarSign className="h-6 w-6" />
+            </div>
+          </div>
+          <div className="mt-4">
+            <span className="text-sm text-gray-500">Avg: ${mockChargeData.avgChargeAmount}</span>
           </div>
         </div>
       </div>
 
-      {/* Revenue Trend Chart */}
+      {/* Charge Volume Evolution */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-        <div className="flex items-center justify-between mb-6">
-          <h3 className="text-lg font-medium text-gray-900">Tendencia de Ingresos</h3>
-          <Calendar className="h-5 w-5 text-gray-400" />
-        </div>
+        <h3 className="text-lg font-medium text-gray-900 mb-6">Charge Volume Evolution</h3>
 
         <div className="relative h-64">
           <div className="absolute inset-0 flex items-end justify-between space-x-2">
-            {mockRevenueData.map((item, index) => (
+            {mockChargeEvolution.map((item, index) => (
               <div key={index} className="flex-1 flex flex-col items-center">
-                <div className="relative w-full">
+                <div className="relative w-full flex space-x-1">
+                  {/* Successful Charges Bar */}
                   <div
-                    className="w-full bg-gradient-to-t from-green-500 to-green-400 rounded-t-lg transition-all duration-500 hover:from-green-600 hover:to-green-500 cursor-pointer"
-                    style={{ height: `${(item.revenue / maxRevenue) * 200}px` }}
-                    title={`${item.month}: $${(item.revenue / 1000).toFixed(0)}K`}
+                    className="flex-1 bg-gradient-to-t from-green-500 to-green-400 rounded-t-lg transition-all duration-500"
+                    style={{ height: `${(item.successful / maxCharges) * 200}px` }}
+                    title={`Successful: ${item.successful.toLocaleString()}`}
+                  ></div>
+                  {/* Failed Charges Bar */}
+                  <div
+                    className="w-3 bg-gradient-to-t from-red-500 to-red-400 rounded-t-lg transition-all duration-500"
+                    style={{ height: `${(item.failed / maxCharges) * 200}px` }}
+                    title={`Failed: ${item.failed.toLocaleString()}`}
                   ></div>
                 </div>
                 <div className="mt-2 text-xs font-medium text-gray-600">{item.month}</div>
-                <div className="text-xs text-gray-500">${(item.revenue / 1000).toFixed(0)}K</div>
+                <div className="text-xs text-gray-500">{item.total.toLocaleString()}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Legend */}
+        <div className="flex items-center justify-center space-x-6 mt-6">
+          <div className="flex items-center space-x-2">
+            <div className="w-4 h-4 bg-green-500 rounded"></div>
+            <span className="text-sm text-gray-600">Successful Charges</span>
+          </div>
+          <div className="flex items-center space-x-2">
+            <div className="w-4 h-4 bg-red-500 rounded"></div>
+            <span className="text-sm text-gray-600">Failed Charges</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Charges by Channel */}
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+        <h3 className="text-lg font-medium text-gray-900 mb-6">Charges by Contracting Channel</h3>
+        
+        <div className="space-y-4">
+          {mockChargesByChannel.map((item, index) => (
+            <div key={index} className="space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="text-sm font-medium text-gray-700">{item.channel}</span>
+                <div className="flex items-center space-x-4">
+                  <span className="text-sm font-medium text-gray-900">{item.charges.toLocaleString()}</span>
+                  <span className="text-xs text-green-600 font-medium">
+                    {item.successRate}% success
+                  </span>
+                </div>
+              </div>
+              <div className="bg-gray-200 rounded-full h-3">
+                <div
+                  className="bg-gradient-to-r from-blue-500 to-blue-600 h-3 rounded-full transition-all duration-500"
+                  style={{ width: `${item.percentage}%` }}
+                ></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Charges by Provider and Type */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* By Provider */}
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+          <h3 className="text-lg font-medium text-gray-900 mb-6">Charges by Provider</h3>
+          
+          <div className="space-y-4">
+            {mockChargesByProvider.map((item, index) => (
+              <div key={index} className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-medium text-gray-700">{item.provider}</span>
+                  <div className="flex items-center space-x-2">
+                    <span className="text-sm font-medium text-gray-900">{item.charges.toLocaleString()}</span>
+                    <span className="text-xs text-green-600 font-medium">
+                      {item.successRate}% success
+                    </span>
+                  </div>
+                </div>
+                <div className="bg-gray-200 rounded-full h-3">
+                  <div
+                    className="bg-gradient-to-r from-blue-500 to-blue-600 h-3 rounded-full transition-all duration-500"
+                    style={{ width: `${(item.charges / mockChargeData.totalCharges) * 100}%` }}
+                  ></div>
+                </div>
+                <div className="flex justify-between text-xs text-gray-500">
+                  <span>Amount: ${item.amount.toLocaleString()}</span>
+                  <span>Failed: {item.failed.toLocaleString()}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* By Charge Type */}
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+          <h3 className="text-lg font-medium text-gray-900 mb-6">Charges by Type</h3>
+          
+          <div className="space-y-4">
+            {mockChargesByType.map((item, index) => (
+              <div key={index} className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-medium text-gray-700">{item.type}</span>
+                  <span className="text-sm font-medium text-gray-900">{item.charges.toLocaleString()}</span>
+                </div>
+                <div className="bg-gray-200 rounded-full h-3">
+                  <div
+                    className={`h-3 rounded-full transition-all duration-500 ${item.color}`}
+                    style={{ width: `${item.percentage}%` }}
+                  ></div>
+                </div>
+                <div className="flex justify-between text-xs text-gray-500">
+                  <span>Amount: ${item.amount.toLocaleString()}</span>
+                  <span>{item.percentage}% of total</span>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      {/* ROI and ARPU Trends */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-          <h3 className="text-lg font-medium text-gray-900 mb-6">Evolución del ROI</h3>
-          <div className="space-y-4">
-            {mockRevenueData.map((item, index) => (
-              <div key={index} className="flex items-center space-x-4">
-                <div className="w-12 text-sm font-medium text-gray-600">{item.month}</div>
-                <div className="flex-1">
-                  <div className="bg-gray-200 rounded-full h-3">
+      {/* Top Products by Charges */}
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+        <h3 className="text-lg font-medium text-gray-900 mb-6">Top Products by Charge Volume</h3>
+        
+        <div className="overflow-x-auto">
+          <table className="w-full">
+            <thead className="bg-gray-50">
+              <tr>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Product
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Provider
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Total Charges
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Total Amount
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Avg per Charge
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  % of Total Volume
+                </th>
+              </tr>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+              {mockChargesByProduct.map((product, index) => (
+                <tr key={index} className="hover:bg-gray-50">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    {product.product}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                    {product.provider}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-600 font-medium">
+                    {product.charges.toLocaleString()}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-green-600 font-medium">
+                    ${product.amount.toLocaleString()}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    ${product.avgAmount.toFixed(2)}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    {((product.charges / mockChargeData.totalCharges) * 100).toFixed(1)}%
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Charge Failure Analysis */}
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+        <h3 className="text-lg font-medium text-gray-900 mb-6">Charge Failure Analysis</h3>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Failure Reasons */}
+          <div>
+            <h4 className="text-md font-medium text-gray-800 mb-4">Top Failure Reasons</h4>
+            <div className="space-y-3">
+              {mockFailureReasons.map((item, index) => (
+                <div key={index} className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-medium text-gray-700">{item.reason}</span>
+                    <div className="flex items-center space-x-2">
+                      <span className="text-sm font-medium text-gray-900">{item.count.toLocaleString()}</span>
+                      <span className="text-xs text-red-600 font-medium">
+                        {item.percentage}%
+                      </span>
+                    </div>
+                  </div>
+                  <div className="bg-gray-200 rounded-full h-2">
                     <div
-                      className="bg-gradient-to-r from-blue-500 to-blue-600 h-3 rounded-full transition-all duration-500"
-                      style={{ width: `${(item.roi / 200) * 100}%` }}
+                      className="bg-gradient-to-r from-red-500 to-red-600 h-2 rounded-full transition-all duration-500"
+                      style={{ width: `${item.percentage}%` }}
                     ></div>
                   </div>
                 </div>
-                <div className="w-16 text-sm font-medium text-gray-900 text-right">
-                  {item.roi}%
-                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Failure Summary */}
+          <div>
+            <h4 className="text-md font-medium text-gray-800 mb-4">Failure Summary</h4>
+            <div className="bg-red-50 rounded-lg p-4 space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-gray-600">Total Failed Charges:</span>
+                <span className="text-sm font-medium text-red-600">
+                  {mockChargeData.failedCharges.toLocaleString()}
+                </span>
               </div>
-            ))}
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-gray-600">Failure Rate:</span>
+                <span className="text-sm font-medium text-red-600">
+                  {(100 - mockChargeData.successRate).toFixed(1)}%
+                </span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-gray-600">Most Common Reason:</span>
+                <span className="text-sm font-medium text-gray-900">
+                  Insufficient Balance
+                </span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-gray-600">Lost Revenue (Est.):</span>
+                <span className="text-sm font-medium text-red-600">
+                  ${(mockChargeData.failedCharges * mockChargeData.avgChargeAmount).toLocaleString()}
+                </span>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
 
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-          <h3 className="text-lg font-medium text-gray-900 mb-6">Evolución del ARPU</h3>
-          <div className="space-y-4">
-            {mockRevenueData.map((item, index) => (
-              <div key={index} className="flex items-center space-x-4">
-                <div className="w-12 text-sm font-medium text-gray-600">{item.month}</div>
-                <div className="flex-1">
-                  <div className="bg-gray-200 rounded-full h-3">
-                    <div
-                      className="bg-gradient-to-r from-purple-500 to-purple-600 h-3 rounded-full transition-all duration-500"
-                      style={{ width: `${(item.arpu / 30) * 100}%` }}
-                    ></div>
-                  </div>
-                </div>
-                <div className="w-16 text-sm font-medium text-gray-900 text-right">
-                  ${item.arpu}
+      {/* Charge Success Rate by Provider */}
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+        <h3 className="text-lg font-medium text-gray-900 mb-6">Charge Success Rate by Provider</h3>
+        
+        <div className="space-y-4">
+          {mockChargesByProvider.map((item, index) => (
+            <div key={index} className="flex items-center space-x-4">
+              <div className="w-24 text-sm font-medium text-gray-600">{item.provider}</div>
+              <div className="flex-1">
+                <div className="bg-gray-200 rounded-full h-4">
+                  <div
+                    className="bg-gradient-to-r from-green-500 to-green-600 h-4 rounded-full transition-all duration-500"
+                    style={{ width: `${item.successRate}%` }}
+                  ></div>
                 </div>
               </div>
-            ))}
-          </div>
+              <div className="w-16 text-sm font-medium text-gray-900 text-right">
+                {item.successRate}%
+              </div>
+              <div className="w-32 text-sm text-gray-500 text-right">
+                {item.successful.toLocaleString()}/{item.charges.toLocaleString()}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>

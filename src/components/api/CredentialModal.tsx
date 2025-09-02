@@ -58,7 +58,7 @@ export default function CredentialModal({ providers, onClose }: CredentialModalP
       <div className="bg-white rounded-xl shadow-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
         <div className="flex items-center justify-between p-6 border-b border-gray-200">
           <h2 className="text-xl font-semibold text-gray-900">
-            Generar Credenciales de API
+            Generate API Credentials
           </h2>
           <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
             <X className="h-6 w-6" />
@@ -72,11 +72,11 @@ export default function CredentialModal({ providers, onClose }: CredentialModalP
               <Key className="h-5 w-5 text-blue-600 mt-0.5 mr-3" />
               <div>
                 <h3 className="text-sm font-medium text-blue-800">
-                  APIs Expuestas por el MSCP
+                  APIs Exposed by MSCP
                 </h3>
                 <p className="text-sm text-blue-700 mt-1">
-                  Las credenciales generadas permitirán al proveedor consumir las APIs que el MSCP expone. 
-                  La disponibilidad de estas APIs depende de los acuerdos técnicos y comerciales con cada MNO.
+                  Generated credentials will allow the provider to consume APIs that MSCP exposes. 
+                  The availability of these APIs depends on technical and commercial agreements with each MNO.
                 </p>
               </div>
             </div>
@@ -85,13 +85,13 @@ export default function CredentialModal({ providers, onClose }: CredentialModalP
           {/* Provider Selection */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Seleccionar Proveedor *
+              Select Provider *
             </label>
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
               <input
                 type="text"
-                placeholder="Buscar proveedores..."
+                placeholder="Search providers..."
                 value={providerSearch}
                 onChange={(e) => setProviderSearch(e.target.value)}
                 className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent mb-2"
@@ -103,7 +103,7 @@ export default function CredentialModal({ providers, onClose }: CredentialModalP
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
               required
             >
-              <option value="">Seleccionar un proveedor</option>
+              <option value="">Select a provider</option>
               {filteredProviders.map((provider) => (
                 <option key={provider.id} value={provider.name}>
                   {provider.name} ({provider.type})
@@ -114,27 +114,27 @@ export default function CredentialModal({ providers, onClose }: CredentialModalP
 
           {/* Available APIs Information */}
           <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
-            <h4 className="text-md font-medium text-gray-900 mb-3">APIs Disponibles para Consumo:</h4>
+            <h4 className="text-md font-medium text-gray-900 mb-3">Available APIs for Consumption:</h4>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
               <div className="flex items-center space-x-2">
                 <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                <span>API de Envío de SMS</span>
+                <span>SMS Sending API</span>
               </div>
               <div className="flex items-center space-x-2">
                 <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                <span>API de Cobro (On-Demand)</span>
+                <span>Charge API (On-Demand)</span>
               </div>
               <div className="flex items-center space-x-2">
                 <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                <span>API de Suscripción</span>
+                <span>Subscription API</span>
               </div>
               <div className="flex items-center space-x-2">
                 <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                <span>API de Cancelación</span>
+                <span>Cancellation API</span>
               </div>
               <div className="flex items-center space-x-2">
                 <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                <span>API de Customer Care</span>
+                <span>Customer Care API</span>
               </div>
             </div>
           </div>
@@ -216,7 +216,7 @@ export default function CredentialModal({ providers, onClose }: CredentialModalP
                       onClick={() => navigator.clipboard.writeText(credentials.apiKey)}
                       className="px-3 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 text-sm"
                     >
-                      Copiar
+                      Copy
                     </button>
                   </div>
                 </div>
@@ -236,19 +236,19 @@ export default function CredentialModal({ providers, onClose }: CredentialModalP
                       onClick={() => navigator.clipboard.writeText(credentials.secretKey)}
                       className="px-3 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 text-sm"
                     >
-                      Copiar
+                      Copy
                     </button>
                   </div>
                 </div>
               </div>
 
               <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                <h4 className="text-sm font-medium text-blue-800 mb-2">Información Importante:</h4>
+                <h4 className="text-sm font-medium text-blue-800 mb-2">Important Information:</h4>
                 <ul className="text-sm text-blue-700 space-y-1">
-                  <li>• Almacene estas credenciales de forma segura</li>
-                  <li>• La Secret Key no se mostrará nuevamente</li>
-                  <li>• Use estas credenciales para autenticar las llamadas a las APIs del MSCP</li>
-                  <li>• La disponibilidad de las APIs depende de los acuerdos con cada MNO</li>
+                  <li>• Store these credentials securely</li>
+                  <li>• The Secret Key will not be shown again</li>
+                  <li>• Use these credentials to authenticate calls to MSCP APIs</li>
+                  <li>• API availability depends on agreements with each MNO</li>
                 </ul>
               </div>
             </div>
@@ -260,7 +260,7 @@ export default function CredentialModal({ providers, onClose }: CredentialModalP
               onClick={onClose}
               className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50"
             >
-              Cerrar
+              Close
             </button>
           </div>
         </div>

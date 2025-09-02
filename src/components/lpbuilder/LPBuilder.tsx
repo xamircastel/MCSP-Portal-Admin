@@ -33,33 +33,33 @@ interface Product {
 const mockLandingPages: LandingPage[] = [
   {
     id: '1',
-    name: 'Digital Virgo Premium LP',
+    name: 'Newry Premium LP',
     product: 'Premium Streaming',
-    provider: 'Digital Virgo',
+    provider: 'Newry',
     template: 'Modern Video',
     status: 'Published',
     views: 15420,
     conversions: 1234,
     createdAt: '2024-03-01',
-    url: 'https://lp.mscp.com/digitalvirgo-premium'
+    url: 'https://lp.mscp.com/newry-premium'
   },
   {
     id: '2',
-    name: 'Timwe Pro LP',
+    name: 'Proveedor 1 Pro LP',
     product: 'Timwe Pro',
-    provider: 'Timwe',
+    provider: 'Proveedor 1',
     template: 'Gaming Theme',
     status: 'Published',
     views: 8930,
     conversions: 892,
     createdAt: '2024-03-05',
-    url: 'https://lp.mscp.com/timwe-pro'
+    url: 'https://lp.mscp.com/proveedor1-pro'
   },
   {
     id: '3',
     name: 'Music Unlimited LP',
     product: 'Music Unlimited',
-    provider: 'Renxo',
+    provider: 'Proveedor 2',
     template: 'Music Wave',
     status: 'Draft',
     views: 0,
@@ -72,19 +72,19 @@ const mockLandingPages: LandingPage[] = [
 const mockProviders: Provider[] = [
   {
     id: '1',
-    name: 'Digital Virgo',
+    name: 'Newry',
     type: 'OTT',
     status: 'Active'
   },
   {
     id: '2',
-    name: 'Timwe',
+    name: 'Proveedor 1',
     type: 'VAS',
     status: 'Active'
   },
   {
     id: '3',
-    name: 'Renxo',
+    name: 'Proveedor 2',
     type: 'OTT',
     status: 'Active'
   }
@@ -94,21 +94,21 @@ const mockProducts: Product[] = [
   {
     id: '1',
     name: 'Premium Streaming',
-    provider: 'Digital Virgo',
+    provider: 'Newry',
     type: 'OTT',
     status: 'Active'
   },
   {
     id: '2',
     name: 'Timwe Pro',
-    provider: 'Timwe',
+    provider: 'Proveedor 1',
     type: 'VAS',
     status: 'Active'
   },
   {
     id: '3',
     name: 'Music Unlimited',
-    provider: 'Renxo',
+    provider: 'Proveedor 2',
     type: 'OTT',
     status: 'Active'
   }

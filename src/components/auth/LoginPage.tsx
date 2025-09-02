@@ -41,13 +41,13 @@ export default function LoginPage() {
         <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
           <div className="text-center mb-8">
             <div className="flex justify-center mb-4">
-              <img src="/Logo.svg" alt="MSCP Admin" className="h-16 w-auto" />
+              <img src="/LogoA1.png" alt="MSCP Admin" className="h-16 w-auto" />
             </div>
             <h1 className="text-2xl font-bold text-gray-900 mb-2">
               {t('login.title')}
             </h1>
             <p className="text-gray-600">
-              VAS & OTT Content Management Platform
+              Content Management Platform
             </p>
           </div>
 

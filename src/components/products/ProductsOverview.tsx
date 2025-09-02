@@ -25,7 +25,7 @@ const mockProducts: Product[] = [
   {
     id: '1',
     name: 'Premium Streaming',
-    provider: 'Digital Virgo',
+    provider: 'Newry',
     type: 'OTT',
     serviceType: 'Subscription',
     price: 9.99,
@@ -36,7 +36,7 @@ const mockProducts: Product[] = [
   {
     id: '2',
     name: 'Gaming Plus Pro',
-    provider: 'Timwe',
+    provider: 'Proveedor 1',
     type: 'VAS',
     serviceType: 'Subscription',
     price: 4.99,
@@ -47,7 +47,7 @@ const mockProducts: Product[] = [
   {
     id: '3',
     name: 'Music Unlimited',
-    provider: 'Renxo',
+    provider: 'Proveedor 2',
     type: 'OTT',
     serviceType: 'Subscription',
     price: 7.99,
@@ -60,19 +60,19 @@ const mockProducts: Product[] = [
 const mockProviders: Provider[] = [
   {
     id: '1',
-    name: 'Digital Virgo',
+    name: 'Newry',
     type: 'OTT',
     status: 'Active'
   },
   {
     id: '2',
-    name: 'Timwe',
+    name: 'Proveedor 1',
     type: 'VAS',
     status: 'Active'
   },
   {
     id: '3',
-    name: 'Renxo',
+    name: 'Proveedor 2',
     type: 'OTT',
     status: 'Active'
   }

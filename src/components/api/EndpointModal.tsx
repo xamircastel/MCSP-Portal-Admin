@@ -38,10 +38,10 @@ export default function EndpointModal({ providers, onClose, onSave }: EndpointMo
 
   const getEventTypeDescription = (type: string) => {
     switch (type) {
-      case 'subscription': return 'Notificación cuando un usuario se suscribe a un servicio';
-      case 'charge': return 'Notificación cuando se realiza un cobro exitoso';
-      case 'cancellation': return 'Notificación cuando un usuario cancela su suscripción';
-      case 'mo': return 'Notificación de mensajes MO (Mobile Originated) del usuario';
+      case 'subscription': return 'Notification when a user subscribes to a service';
+      case 'charge': return 'Notification when a successful charge is made';
+      case 'cancellation': return 'Notification when a user cancels their subscription';
+      case 'mo': return 'Notification of MO (Mobile Originated) messages from user';
       default: return '';
     }
   };
@@ -62,13 +62,13 @@ export default function EndpointModal({ providers, onClose, onSave }: EndpointMo
           {/* Provider Selection */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Seleccionar Proveedor *
+              Select Provider *
             </label>
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
               <input
                 type="text"
-                placeholder="Buscar proveedores..."
+                placeholder="Search providers..."
                 value={providerSearch}
                 onChange={(e) => setProviderSearch(e.target.value)}
                 className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent mb-2"
@@ -80,7 +80,7 @@ export default function EndpointModal({ providers, onClose, onSave }: EndpointMo
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
               required
             >
-              <option value="">Seleccionar un proveedor</option>
+              <option value="">Select a provider</option>
               {filteredProviders.map((provider) => (
                 <option key={provider.id} value={provider.name}>
                   {provider.name} ({provider.type})
@@ -92,7 +92,7 @@ export default function EndpointModal({ providers, onClose, onSave }: EndpointMo
           {/* Event Type */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Tipo de Evento *
+              Event Type *
             </label>
             <select
               value={formData.endpointType}
@@ -100,10 +100,10 @@ export default function EndpointModal({ providers, onClose, onSave }: EndpointMo
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
               required
             >
-              <option value="subscription">Notificación de Alta de Suscripción</option>
-              <option value="charge">Notificación de Cobro Exitoso</option>
-              <option value="cancellation">Notificación de Cancelación</option>
-              <option value="mo">Notificación de MO</option>
+              <option value="subscription">Subscription Activation Notification</option>
+              <option value="charge">Successful Charge Notification</option>
+              <option value="cancellation">Cancellation Notification</option>
+              <option value="mo">MO Notification</option>
             </select>
             {formData.endpointType && (
               <p className="mt-2 text-sm text-gray-600">
@@ -115,7 +115,7 @@ export default function EndpointModal({ providers, onClose, onSave }: EndpointMo
           {/* HTTP Method */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Método HTTP *
+              HTTP Method *
             </label>
             <select
               value={formData.method}
@@ -133,47 +133,47 @@ export default function EndpointModal({ providers, onClose, onSave }: EndpointMo
           {/* URL */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              URL del Endpoint *
+              Endpoint URL *
             </label>
             <input
               type="url"
               value={formData.url}
               onChange={(e) => setFormData(prev => ({ ...prev, url: e.target.value }))}
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-              placeholder="https://api.proveedor.com/notifications/subscription"
+              placeholder="https://api.provider.com/notifications/subscription"
               required
             />
             <p className="mt-2 text-sm text-gray-600">
-              URL donde el MSCP enviará las notificaciones de eventos
+              URL where MSCP will send event notifications
             </p>
           </div>
 
           {/* Description */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Descripción
+              Description
             </label>
             <textarea
               value={formData.description}
               onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
               rows={3}
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-              placeholder="Descripción del endpoint y su propósito"
+              placeholder="Endpoint description and purpose"
             />
           </div>
 
           {/* Status */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Estado
+              Status
             </label>
             <select
               value={formData.status}
               onChange={(e) => setFormData(prev => ({ ...prev, status: e.target.value as 'Active' | 'Inactive' }))}
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
             >
-              <option value="Active">Activo</option>
-              <option value="Inactive">Inactivo</option>
+              <option value="Active">Active</option>
+              <option value="Inactive">Inactive</option>
             </select>
           </div>
 
@@ -184,13 +184,13 @@ export default function EndpointModal({ providers, onClose, onSave }: EndpointMo
               onClick={onClose}
               className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50"
             >
-              Cancelar
+              Cancel
             </button>
             <button
               type="submit"
               className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
             >
-              Crear Endpoint
+              Create Endpoint
             </button>
           </div>
         </form>

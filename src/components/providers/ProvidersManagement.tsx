@@ -15,7 +15,7 @@ interface Provider {
 const mockProviders: Provider[] = [
   {
     id: '1',
-    name: 'Digital Virgo',
+    name: 'Newry',
     type: 'OTT',
     products: 12,
     revenue: 450000,
@@ -24,7 +24,7 @@ const mockProviders: Provider[] = [
   },
   {
     id: '2',
-    name: 'Timwe',
+    name: 'Proveedor 1',
     type: 'VAS',
     products: 8,
     revenue: 280000,
@@ -33,7 +33,7 @@ const mockProviders: Provider[] = [
   },
   {
     id: '3',
-    name: 'Renxo',
+    name: 'Proveedor 2',
     type: 'OTT',
     products: 5,
     revenue: 180000,

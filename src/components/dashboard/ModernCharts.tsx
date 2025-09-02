@@ -24,9 +24,9 @@ export default function ModernCharts() {
   ];
 
   const productPerformance = [
-    { name: 'Digital Virgo', value: 35, color: 'bg-blue-500' },
-    { name: 'Timwe', value: 28, color: 'bg-green-500' },
-    { name: 'Renxo', value: 22, color: 'bg-purple-500' },
+    { name: 'Newry', value: 35, color: 'bg-blue-500' },
+    { name: 'Provider 1', value: 28, color: 'bg-green-500' },
+    { name: 'Provider 2', value: 22, color: 'bg-purple-500' },
     { name: 'Others', value: 15, color: 'bg-orange-500' }
   ];
 
