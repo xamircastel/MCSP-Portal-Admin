@@ -58,7 +58,7 @@ export default function SubscriptionsReport() {
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">New Subscriptions</p>
+              <p className="text-sm font-medium text-gray-600">Nuevas Suscripciones</p>
               <p className="text-2xl font-bold text-gray-900">
                 {mockSubscriptionData.newSubscriptions.toLocaleString()}
               </p>
@@ -68,7 +68,7 @@ export default function SubscriptionsReport() {
             </div>
           </div>
           <div className="mt-4">
-            <span className="text-sm text-gray-500">This period</span>
+            <span className="text-sm text-gray-500">Este período</span>
           </div>
         </div>
 
@@ -194,26 +194,26 @@ export default function SubscriptionsReport() {
 
       {/* Provider Breakdown */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-        <h3 className="text-lg font-medium text-gray-900 mb-6">Desglose por Proveedor</h3>
+        <h3 className="text-lg font-medium text-gray-900 mb-6">Breakdown by Provider</h3>
         
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead className="bg-gray-50">
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Proveedor
+                  Provider
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Suscripciones
+                  Subscriptions
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Cancelaciones
+                  Cancellations
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Tasa de Cancelación
+                  Churn Rate
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Crecimiento Neto
+                  Net Growth
                 </th>
               </tr>
             </thead>
