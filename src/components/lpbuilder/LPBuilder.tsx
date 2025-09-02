@@ -46,7 +46,7 @@ const mockLandingPages: LandingPage[] = [
   {
     id: '2',
     name: 'Proveedor 1 Pro LP',
-    product: 'Timwe Pro',
+    product: 'Provider 1',
     provider: 'Provider 1',
     template: 'Gaming Theme',
     status: 'Published',
@@ -100,7 +100,7 @@ const mockProducts: Product[] = [
   },
   {
     id: '2',
-    name: 'Timwe Pro',
+    name: 'Provider 1',
     provider: 'Provider 1',
     type: 'VAS',
     status: 'Active'
