@@ -88,7 +88,7 @@ export default function ReportFilters({ type, onFiltersChange, dateRange, onDate
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 <Calendar className="h-4 w-4 inline mr-1" />
-                Fecha de Inicio
+                Start Date
               </label>
               <input
                 type="date"
@@ -100,7 +100,7 @@ export default function ReportFilters({ type, onFiltersChange, dateRange, onDate
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 <Calendar className="h-4 w-4 inline mr-1" />
-                Fecha de Fin
+                End Date
               </label>
               <input
                 type="date"
