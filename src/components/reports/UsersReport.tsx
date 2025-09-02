@@ -19,11 +19,11 @@ const mockUserEvolution = [
 ];
 
 const mockUserDistribution = [
-  { category: 'Juegos', users: 8500, percentage: 30.8 },
+  { category: 'Games', users: 8500, percentage: 30.8 },
   { category: 'Videos', users: 7200, percentage: 26.1 },
-  { category: 'Música', users: 5800, percentage: 21.0 },
-  { category: 'Libros', users: 3900, percentage: 14.1 },
-  { category: 'Otros', users: 2190, percentage: 7.9 }
+  { category: 'Music', users: 5800, percentage: 21.0 },
+  { category: 'Books', users: 3900, percentage: 14.1 },
+  { category: 'Others', users: 2190, percentage: 7.9 }
 ];
 
 export default function UsersReport() {
