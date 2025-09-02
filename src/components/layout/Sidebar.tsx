@@ -4,30 +4,29 @@ import { LayoutDashboard, Users, Package, Settings, Code, FileText, Calculator, 
 import { useLanguage } from '../../contexts/LanguageContext';
 
 const navigation = [
-  { name: 'nav.dashboard', href: '/dashboard', icon: LayoutDashboard },
-  { name: 'nav.providers', href: '/providers', icon: Users },
-  { name: 'nav.products', href: '/products', icon: Package },
-  { name: 'nav.packages', href: '/packages', icon: Box },
-  { name: 'nav.api', href: '/api-manager', icon: Code },
-  { name: 'nav.lpbuilder', href: '/lp-builder', icon: FileText },
-  { name: 'nav.reconciliator', href: '/reconciliator', icon: Calculator },
-  { name: 'nav.cms', href: '/cms', icon: Monitor },
-  { name: 'nav.tickets', href: '/communication', icon: MessageSquare },
-  { name: 'nav.customercare', href: '/customer-care', icon: Headphones },
-  { name: 'nav.users', href: '/users-roles', icon: Shield },
+  { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
+  { name: 'Providers', href: '/providers', icon: Users },
+  { name: 'Products', href: '/products', icon: Package },
+  { name: 'Packages', href: '/packages', icon: Box },
+  { name: 'API Manager', href: '/api-manager', icon: Code },
+  { name: 'LP Builder', href: '/lp-builder', icon: FileText },
+  { name: 'Reconciliator', href: '/reconciliator', icon: Calculator },
+  { name: 'CMS', href: '/cms', icon: Monitor },
+  { name: 'Tickets', href: '/communication', icon: MessageSquare },
+  { name: 'Customer Care', href: '/customer-care', icon: Headphones },
+  { name: 'Users & Roles', href: '/users-roles', icon: Shield },
 ];
 
 const reportsNavigation = [
-  { name: 'nav.reports.financial', href: '/reports/financial', icon: DollarSign },
-  { name: 'nav.reports.users', href: '/reports/users', icon: UserPlus },
-  { name: 'nav.reports.subscriptions', href: '/reports/subscriptions', icon: Users },
-  { name: 'nav.reports.blocks', href: '/reports/blocks', icon: Ban },
-  { name: 'nav.reports.claims', href: '/reports/claims', icon: AlertTriangle },
-  { name: 'nav.reports.funnel', href: '/reports/funnel', icon: Funnel },
+  { name: 'Charges Report', href: '/reports/financial', icon: DollarSign },
+  { name: 'User Base', href: '/reports/users', icon: UserPlus },
+  { name: 'Subscriptions & Cancellations', href: '/reports/subscriptions', icon: Users },
+  { name: 'Blocks & Unblocks', href: '/reports/blocks', icon: Ban },
+  { name: 'Claims', href: '/reports/claims', icon: AlertTriangle },
+  { name: 'Contracting Funnel', href: '/reports/funnel', icon: Funnel },
 ];
 
 export default function Sidebar() {
-  const { t } = useLanguage();
   const [isReportsOpen, setIsReportsOpen] = useState(false);
 
   return (
@@ -51,7 +50,7 @@ export default function Sidebar() {
                 }
               >
                 <item.icon className="mr-3 h-5 w-5" />
-                {t(item.name)}
+                {item.name}
               </NavLink>
             </li>
           ))}
@@ -64,7 +63,7 @@ export default function Sidebar() {
             >
               <div className="flex items-center">
                 <BarChart3 className="mr-3 h-5 w-5" />
-                {t('nav.reports')}
+                Reports
               </div>
               {isReportsOpen ? (
                 <ChevronDown className="h-4 w-4" />
@@ -89,7 +88,7 @@ export default function Sidebar() {
                       }
                     >
                       <item.icon className="mr-3 h-4 w-4" />
-                      {t(item.name)}
+                      {item.name}
                     </NavLink>
                   </li>
                 ))}

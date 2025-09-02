@@ -59,6 +59,31 @@ const mockChargesByChannel = [
   { channel: 'USSD', charges: 1800, percentage: 4.0, successRate: 87.3 }
 ];
 
+const mockChargeVolumeByHour = [
+  { hour: '00:00', charges: 1200, successful: 1140, failed: 60 },
+  { hour: '02:00', charges: 800, successful: 760, failed: 40 },
+  { hour: '04:00', charges: 600, successful: 570, failed: 30 },
+  { hour: '06:00', charges: 1400, successful: 1330, failed: 70 },
+  { hour: '08:00', charges: 2200, successful: 2090, failed: 110 },
+  { hour: '10:00', charges: 2800, successful: 2660, failed: 140 },
+  { hour: '12:00', charges: 3200, successful: 3040, failed: 160 },
+  { hour: '14:00', charges: 3400, successful: 3230, failed: 170 },
+  { hour: '16:00', charges: 3100, successful: 2945, failed: 155 },
+  { hour: '18:00', charges: 2900, successful: 2755, failed: 145 },
+  { hour: '20:00', charges: 2600, successful: 2470, failed: 130 },
+  { hour: '22:00', charges: 2000, successful: 1900, failed: 100 }
+];
+
+const mockChargesByDay = [
+  { day: 'Monday', charges: 7200, successful: 6840, failed: 360, successRate: 95.0 },
+  { day: 'Tuesday', charges: 6800, successful: 6460, failed: 340, successRate: 95.0 },
+  { day: 'Wednesday', charges: 6500, successful: 6175, failed: 325, successRate: 95.0 },
+  { day: 'Thursday', charges: 6900, successful: 6555, failed: 345, successRate: 95.0 },
+  { day: 'Friday', charges: 7800, successful: 7410, failed: 390, successRate: 95.0 },
+  { day: 'Saturday', charges: 5200, successful: 4940, failed: 260, successRate: 95.0 },
+  { day: 'Sunday', charges: 4880, successful: 4636, failed: 244, successRate: 95.0 }
+];
+
 const mockFailureReasons = [
   { reason: 'Insufficient Balance', count: 1420, percentage: 45.4 },
   { reason: 'User Blocked', count: 680, percentage: 21.7 },
@@ -75,6 +100,7 @@ export default function FinancialReport() {
   });
 
   const maxCharges = Math.max(...mockChargeEvolution.map(d => d.total));
+  const maxHourlyCharges = Math.max(...mockChargeVolumeByHour.map(d => d.charges));
 
   return (
     <div className="space-y-6">
@@ -96,7 +122,7 @@ export default function FinancialReport() {
         onDateRangeChange={setDateRange}
       />
 
-      {/* Charge Metrics Cards */}
+      {/* Charge Volume Metrics Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <div className="flex items-center justify-between">
@@ -211,15 +237,45 @@ export default function FinancialReport() {
         </div>
       </div>
 
-      {/* Charges by Channel */}
+      {/* Charge Volume by Hour */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-        <h3 className="text-lg font-medium text-gray-900 mb-6">Charges by Contracting Channel</h3>
+        <h3 className="text-lg font-medium text-gray-900 mb-6">Charge Volume by Hour of Day</h3>
+
+        <div className="relative h-64">
+          <div className="absolute inset-0 flex items-end justify-between space-x-1">
+            {mockChargeVolumeByHour.map((item, index) => (
+              <div key={index} className="flex-1 flex flex-col items-center">
+                <div className="relative w-full">
+                  <div
+                    className="w-full bg-gradient-to-t from-blue-500 to-blue-400 rounded-t-lg transition-all duration-500"
+                    style={{ height: `${(item.charges / maxHourlyCharges) * 200}px` }}
+                    title={`${item.hour}: ${item.charges.toLocaleString()} charges`}
+                  ></div>
+                </div>
+                <div className="mt-2 text-xs font-medium text-gray-600 transform -rotate-45">
+                  {item.hour}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-8 text-center">
+          <p className="text-sm text-gray-600">
+            Peak hours: <strong>12:00-16:00</strong> | Lowest activity: <strong>02:00-06:00</strong>
+          </p>
+        </div>
+      </div>
+
+      {/* Charge Volume by Day of Week */}
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+        <h3 className="text-lg font-medium text-gray-900 mb-6">Charge Volume by Day of Week</h3>
         
         <div className="space-y-4">
-          {mockChargesByChannel.map((item, index) => (
+          {mockChargesByDay.map((item, index) => (
             <div key={index} className="space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-sm font-medium text-gray-700">{item.channel}</span>
+                <span className="text-sm font-medium text-gray-700">{item.day}</span>
                 <div className="flex items-center space-x-4">
                   <span className="text-sm font-medium text-gray-900">{item.charges.toLocaleString()}</span>
                   <span className="text-xs text-green-600 font-medium">
@@ -230,7 +286,7 @@ export default function FinancialReport() {
               <div className="bg-gray-200 rounded-full h-3">
                 <div
                   className="bg-gradient-to-r from-blue-500 to-blue-600 h-3 rounded-full transition-all duration-500"
-                  style={{ width: `${item.percentage}%` }}
+                  style={{ width: `${(item.charges / Math.max(...mockChargesByDay.map(d => d.charges))) * 100}%` }}
                 ></div>
               </div>
             </div>
@@ -238,7 +294,7 @@ export default function FinancialReport() {
         </div>
       </div>
 
-      {/* Charges by Provider and Type */}
+      {/* Charges by Provider and Channel */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* By Provider */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
@@ -271,30 +327,73 @@ export default function FinancialReport() {
           </div>
         </div>
 
-        {/* By Charge Type */}
+        {/* By Channel */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-          <h3 className="text-lg font-medium text-gray-900 mb-6">Charges by Type</h3>
+          <h3 className="text-lg font-medium text-gray-900 mb-6">Charges by Channel</h3>
           
           <div className="space-y-4">
-            {mockChargesByType.map((item, index) => (
-              <div key={index} className="space-y-3">
+            {mockChargesByChannel.map((item, index) => (
+              <div key={index} className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium text-gray-700">{item.type}</span>
-                  <span className="text-sm font-medium text-gray-900">{item.charges.toLocaleString()}</span>
+                  <span className="text-sm font-medium text-gray-700">{item.channel}</span>
+                  <div className="flex items-center space-x-4">
+                    <span className="text-sm font-medium text-gray-900">{item.charges.toLocaleString()}</span>
+                    <span className="text-xs text-green-600 font-medium">
+                      {item.successRate}% success
+                    </span>
+                  </div>
                 </div>
                 <div className="bg-gray-200 rounded-full h-3">
                   <div
-                    className={`h-3 rounded-full transition-all duration-500 ${item.color}`}
+                    className="bg-gradient-to-r from-purple-500 to-purple-600 h-3 rounded-full transition-all duration-500"
                     style={{ width: `${item.percentage}%` }}
                   ></div>
-                </div>
-                <div className="flex justify-between text-xs text-gray-500">
-                  <span>Amount: ${item.amount.toLocaleString()}</span>
-                  <span>{item.percentage}% of total</span>
                 </div>
               </div>
             ))}
           </div>
+        </div>
+      </div>
+
+      {/* Charge Type Distribution */}
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+        <h3 className="text-lg font-medium text-gray-900 mb-6">Charge Distribution by Type</h3>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {mockChargesByType.map((item, index) => (
+            <div key={index} className="text-center">
+              <div className="relative w-32 h-32 mx-auto mb-4">
+                <svg className="w-32 h-32 transform -rotate-90" viewBox="0 0 64 64">
+                  <circle
+                    cx="32"
+                    cy="32"
+                    r="28"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                    fill="none"
+                    className="text-gray-200"
+                  />
+                  <circle
+                    cx="32"
+                    cy="32"
+                    r="28"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                    fill="none"
+                    strokeDasharray={`${item.percentage * 1.76} 176`}
+                    className={item.color.replace('bg-', 'text-')}
+                    strokeLinecap="round"
+                  />
+                </svg>
+                <div className="absolute inset-0 flex flex-col items-center justify-center">
+                  <span className="text-lg font-bold text-gray-900">{item.percentage}%</span>
+                  <span className="text-xs text-gray-500">{item.charges.toLocaleString()}</span>
+                </div>
+              </div>
+              <h4 className="font-medium text-gray-900 mb-1">{item.type}</h4>
+              <p className="text-sm text-gray-600">${item.amount.toLocaleString()}</p>
+            </div>
+          ))}
         </div>
       </div>
 

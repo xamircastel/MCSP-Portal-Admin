@@ -7,11 +7,10 @@ import PerformanceMetrics from './PerformanceMetrics';
 import ActivityFeed from './ActivityFeed';
 
 export default function Dashboard() {
-  const { t } = useLanguage();
 
   const stats = [
     {
-      title: t('dashboard.providers'),
+      title: 'Total Providers',
       value: '24',
       change: '+12%',
       trend: 'up' as const,
@@ -19,7 +18,7 @@ export default function Dashboard() {
       color: 'blue'
     },
     {
-      title: t('dashboard.products'),
+      title: 'Total Products',
       value: '156',
       change: '+8%',
       trend: 'up' as const,
@@ -27,7 +26,7 @@ export default function Dashboard() {
       color: 'green'
     },
     {
-      title: t('dashboard.revenue'),
+      title: 'Monthly Revenue',
       value: '$2.4M',
       change: '+15%',
       trend: 'up' as const,
@@ -35,7 +34,7 @@ export default function Dashboard() {
       color: 'purple'
     },
     {
-      title: t('dashboard.tickets'),
+      title: 'Open Tickets',
       value: '12',
       change: '-5%',
       trend: 'down' as const,
@@ -47,7 +46,7 @@ export default function Dashboard() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold text-gray-900">{t('dashboard.title')}</h1>
+        <h1 className="text-3xl font-bold text-gray-900">Dashboard Overview</h1>
         <div className="flex items-center space-x-2 text-sm text-gray-500">
           <Activity className="h-4 w-4" />
           <span>Last updated: 2 minutes ago</span>

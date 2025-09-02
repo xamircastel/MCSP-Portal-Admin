@@ -44,7 +44,7 @@ export default function LoginPage() {
               <img src="/LogoA1.png" alt="MSCP Admin" className="h-16 w-auto" />
             </div>
             <h1 className="text-2xl font-bold text-gray-900 mb-2">
-              {t('login.title')}
+              MSCP Admin Portal
             </h1>
             <p className="text-gray-600">
               Content Management Platform
@@ -54,7 +54,7 @@ export default function LoginPage() {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-2">
-                {t('login.username')}
+                Username
               </label>
               <input
                 id="username"
@@ -69,7 +69,7 @@ export default function LoginPage() {
 
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
-                {t('login.password')}
+                Password
               </label>
               <div className="relative">
                 <input
@@ -93,7 +93,7 @@ export default function LoginPage() {
 
             {error && (
               <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
-                {error}
+                Invalid credentials
               </div>
             )}
 
@@ -108,7 +108,7 @@ export default function LoginPage() {
                   Signing in...
                 </div>
               ) : (
-                t('login.button')
+                'Sign In'
               )}
             </button>
           </form>

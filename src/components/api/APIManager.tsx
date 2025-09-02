@@ -344,7 +344,7 @@ export default function APIManager() {
                 <div>
                   <h3 className="text-lg font-medium text-gray-900">API Endpoints - Notificaciones Outbound</h3>
                   <p className="text-sm text-gray-600 mt-1">
-                    Gestión de endpoints de proveedores para notificaciones de eventos del MSCP
+                    Management of provider endpoints for MSCP event notifications
                   </p>
                 </div>
                 <button 
@@ -352,7 +352,7 @@ export default function APIManager() {
                   className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center space-x-2"
                 >
                   <Plus className="h-4 w-4" />
-                  <span>Agregar Endpoint</span>
+                  <span>Add Endpoint</span>
                 </button>
               </div>
 
@@ -361,22 +361,22 @@ export default function APIManager() {
                   <thead className="bg-gray-50">
                     <tr>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Proveedor
+                        Provider
                       </th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Tipo de Evento
+                        Event Type
                       </th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Método
+                        Method
                       </th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         URL
                       </th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Estado
+                        Status
                       </th>
                       <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Acciones
+                        Actions
                       </th>
                     </tr>
                   </thead>
@@ -431,7 +431,7 @@ export default function APIManager() {
                 <div>
                   <h3 className="text-lg font-medium text-gray-900">Credenciales - APIs Expuestas por MSCP</h3>
                   <p className="text-sm text-gray-600 mt-1">
-                    Gestión de credenciales y documentación de APIs que el MSCP expone a terceros
+                    Management of credentials and documentation for APIs that MSCP exposes to third parties
                   </p>
                 </div>
                 <button 
@@ -439,13 +439,13 @@ export default function APIManager() {
                   className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center space-x-2"
                 >
                   <Plus className="h-4 w-4" />
-                  <span>Generar Credenciales</span>
+                  <span>Generate Credentials</span>
                 </button>
               </div>
 
               {/* MSCP APIs Catalog */}
               <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-                <h4 className="text-lg font-medium text-blue-900 mb-4">Catálogo de APIs del MSCP</h4>
+                <h4 className="text-lg font-medium text-blue-900 mb-4">MSCP API Catalog</h4>
                 <div className="grid gap-4">
                   {mscpApis.map((api) => (
                     <div key={api.id} className="bg-white border border-blue-200 rounded-lg p-4">
@@ -476,7 +476,7 @@ export default function APIManager() {
                       </div>
                       
                       <div>
-                        <h6 className="text-sm font-medium text-gray-700 mb-2">Casos de Uso:</h6>
+                        <h6 className="text-sm font-medium text-gray-700 mb-2">Use Cases:</h6>
                         <ul className="text-sm text-gray-600 space-y-1">
                           {api.useCases.map((useCase, index) => (
                             <li key={index} className="flex items-start">
@@ -493,7 +493,7 @@ export default function APIManager() {
 
               {/* Generated Credentials */}
               <div>
-                <h4 className="text-lg font-medium text-gray-900 mb-4">Credenciales Generadas</h4>
+                <h4 className="text-lg font-medium text-gray-900 mb-4">Generated Credentials</h4>
                 <div className="grid gap-6">
                   {credentials.map((credential) => (
                     <div key={credential.id} className="bg-gray-50 rounded-lg p-6">
@@ -501,8 +501,8 @@ export default function APIManager() {
                         <div>
                           <h4 className="text-lg font-medium text-gray-900">{credential.provider}</h4>
                           <div className="flex items-center space-x-4 text-sm text-gray-500">
-                            <span>Creado: {credential.createdAt}</span>
-                            <span>Último uso: {credential.lastUsed}</span>
+                            <span>Created: {credential.createdAt}</span>
+                            <span>Last used: {credential.lastUsed}</span>
                             <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
                               credential.status === 'Active' 
                                 ? 'bg-green-100 text-green-800' 
@@ -587,7 +587,7 @@ export default function APIManager() {
                 <div>
                   <h3 className="text-lg font-medium text-gray-900">Content Portals - Gestión de Contenido</h3>
                   <p className="text-sm text-gray-600 mt-1">
-                    URLs y activos digitales asociados a cada producto para redirección post-suscripción
+                    URLs and digital assets associated with each product for post-subscription redirection
                   </p>
                 </div>
               </div>
@@ -597,22 +597,22 @@ export default function APIManager() {
                   <thead className="bg-gray-50">
                     <tr>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Proveedor
+                        Provider
                       </th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Producto
+                        Product
                       </th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Tipo
+                        Type
                       </th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        URL/Archivo
+                        URL/File
                       </th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Estado
+                        Status
                       </th>
                       <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Acciones
+                        Actions
                       </th>
                     </tr>
                   </thead>
@@ -678,11 +678,11 @@ export default function APIManager() {
                   <Globe className="h-5 w-5 text-yellow-600 mt-0.5 mr-3" />
                   <div>
                     <h4 className="text-sm font-medium text-yellow-800">
-                      Gestión de Portales de Contenido
+                      Content Portal Management
                     </h4>
                     <p className="text-sm text-yellow-700 mt-1">
-                      Los portales de contenido definen hacia dónde se redirige al usuario después de completar 
-                      una suscripción exitosa. Pueden ser URLs de portales web o archivos de aplicaciones móviles.
+                      Content portals define where users are redirected after completing a successful subscription. 
+                      They can be web portal URLs or mobile application files.
                     </p>
                   </div>
                 </div>
