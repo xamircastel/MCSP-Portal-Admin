@@ -38,11 +38,11 @@ export default function UsersReport() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold text-gray-900">Bases de Usuarios</h1>
+        <h1 className="text-3xl font-bold text-gray-900">User Base</h1>
         <div className="flex items-center space-x-4">
           <button className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center space-x-2">
             <Download className="h-4 w-4" />
-            <span>Exportar</span>
+            <span>Export</span>
           </button>
         </div>
       </div>
@@ -60,7 +60,7 @@ export default function UsersReport() {
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Usuarios Activos</p>
+              <p className="text-sm font-medium text-gray-600">Active Users</p>
               <p className="text-2xl font-bold text-gray-900">
                 {mockUserData.totalActiveUsers.toLocaleString()}
               </p>
@@ -72,7 +72,7 @@ export default function UsersReport() {
           <div className="mt-4 flex items-center">
             <TrendingUp className="h-4 w-4 text-green-500 mr-1" />
             <span className="text-sm font-medium text-green-600">+{mockUserData.userGrowth}%</span>
-            <span className="text-sm text-gray-500 ml-1">vs mes anterior</span>
+            <span className="text-sm text-gray-500 ml-1">vs previous month</span>
           </div>
         </div>
 
