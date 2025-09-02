@@ -58,7 +58,7 @@ export default function SubscriptionsReport() {
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Nuevas Suscripciones</p>
+              <p className="text-sm font-medium text-gray-600">New Subscriptions</p>
               <p className="text-2xl font-bold text-gray-900">
                 {mockSubscriptionData.newSubscriptions.toLocaleString()}
               </p>
@@ -68,7 +68,7 @@ export default function SubscriptionsReport() {
             </div>
           </div>
           <div className="mt-4">
-            <span className="text-sm text-gray-500">Este período</span>
+            <span className="text-sm text-gray-500">This period</span>
           </div>
         </div>
 
