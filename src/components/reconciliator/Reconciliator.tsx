@@ -28,7 +28,7 @@ const mockRevenueData: RevenueData[] = [
   {
     id: '2',
     provider: 'Provider 1',
-    product: 'Timwe Pro',
+    product: 'Gaming Pro Plus',
     totalRevenue: 44560,
     revenueShare: 65,
     providerRevenue: 28964,
