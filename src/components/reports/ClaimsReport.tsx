@@ -19,8 +19,8 @@ const mockClaimsTrend = [
 ];
 
 const mockClaimsByProvider = [
-  { provider: 'Digital Virgo', claims: 520, percentage: 41.9, trend: -5.2 },
-  { provider: 'Timwe', claims: 420, percentage: 33.9, trend: -12.1 },
+  { provider: 'Newry', claims: 520, percentage: 41.9, trend: -5.2 },
+  { provider: 'Provider 1', claims: 420, percentage: 33.9, trend: -12.1 },
   { provider: 'Provider 2', claims: 300, percentage: 24.2, trend: -6.8 }
 ];
 
@@ -33,11 +33,11 @@ const mockClaimsByCategory = [
 ];
 
 const mockClaimsByProduct = [
-  { product: 'Premium Streaming', claims: 280, provider: 'Digital Virgo' },
-  { product: 'Gaming Plus Pro', claims: 240, provider: 'Timwe' },
-  { product: 'Music Unlimited', claims: 180, provider: 'Renxo' },
-  { product: 'Video Pro', claims: 160, provider: 'Digital Virgo' },
-  { product: 'Book Library', claims: 120, provider: 'Timwe' }
+  { product: 'Premium Streaming', claims: 280, provider: 'Newry' },
+  { product: 'Gaming Plus Pro', claims: 240, provider: 'Provider 1' },
+  { product: 'Music Unlimited', claims: 180, provider: 'Provider 2' },
+  { product: 'Video Pro', claims: 160, provider: 'Newry' },
+  { product: 'Book Library', claims: 120, provider: 'Provider 1' }
 ];
 
 export default function ClaimsReport() {
