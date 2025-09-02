@@ -63,7 +63,7 @@ export default function FinancialReport() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold text-gray-900">Financial Report</h1>
+        <h1 className="text-3xl font-bold text-gray-900">Financials Report</h1>
         <div className="flex items-center space-x-4">
           <button className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center space-x-2">
             <Download className="h-4 w-4" />
