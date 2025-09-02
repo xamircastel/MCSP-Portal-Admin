@@ -21,17 +21,17 @@ const mockRevenueEvolution = [
 ];
 
 const mockRevenueByProvider = [
-  { provider: 'Digital Virgo', revenue: 980000, charges: 18500, arpu: 52.97, percentage: 40.0 },
-  { provider: 'Timwe', revenue: 820000, charges: 15200, arpu: 53.95, percentage: 33.5 },
-  { provider: 'Renxo', revenue: 650000, charges: 11580, arpu: 56.14, percentage: 26.5 }
+  { provider: 'Newry', revenue: 980000, charges: 18500, arpu: 52.97, percentage: 40.0 },
+  { provider: 'Provider 1', revenue: 820000, charges: 15200, arpu: 53.95, percentage: 33.5 },
+  { provider: 'Provider 2', revenue: 650000, charges: 11580, arpu: 56.14, percentage: 26.5 }
 ];
 
 const mockRevenueByProduct = [
-  { product: 'Premium Streaming', provider: 'Digital Virgo', revenue: 680000, charges: 12800, arpu: 53.13 },
-  { product: 'Gaming Plus Pro', provider: 'Timwe', revenue: 420000, charges: 9200, arpu: 45.65 },
-  { product: 'Music Unlimited', provider: 'Renxo', revenue: 380000, charges: 8500, arpu: 44.71 },
-  { product: 'Video Pro', provider: 'Digital Virgo', revenue: 350000, charges: 7800, arpu: 44.87 },
-  { product: 'Book Library', provider: 'Timwe', revenue: 320000, charges: 6980, arpu: 45.84 }
+  { product: 'Premium Streaming', provider: 'Newry', revenue: 680000, charges: 12800, arpu: 53.13 },
+  { product: 'Gaming Plus Pro', provider: 'Provider 1', revenue: 420000, charges: 9200, arpu: 45.65 },
+  { product: 'Music Unlimited', provider: 'Provider 2', revenue: 380000, charges: 8500, arpu: 44.71 },
+  { product: 'Video Pro', provider: 'Newry', revenue: 350000, charges: 7800, arpu: 44.87 },
+  { product: 'Book Library', provider: 'Provider 1', revenue: 320000, charges: 6980, arpu: 45.84 }
 ];
 
 const mockARPUByCategory = [
