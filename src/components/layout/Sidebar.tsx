@@ -18,7 +18,7 @@ const navigation = [
 ];
 
 const reportsNavigation = [
-  { name: 'Charges Report', href: '/reports/financial', icon: DollarSign },
+  { name: 'Financials Report', href: '/reports/financial', icon: DollarSign },
   { name: 'User Base', href: '/reports/users', icon: UserPlus },
   { name: 'Subscriptions & Cancellations', href: '/reports/subscriptions', icon: Users },
   { name: 'Blocks & Unblocks', href: '/reports/blocks', icon: Ban },
