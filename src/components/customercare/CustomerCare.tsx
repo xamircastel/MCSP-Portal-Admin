@@ -26,19 +26,19 @@ const mockUserData: Record<string, UserInfo> = {
       {
         id: '1',
         productName: 'Premium Streaming',
-        providerName: 'Digital Virgo',
+        providerName: 'Provider 2',
         contractDate: '2024-02-15',
-        serviceType: 'Suscripción',
-        status: 'Activa',
+        serviceType: 'Subscription',
+        status: 'Active',
         contractChannel: 'HE'
       },
       {
         id: '2',
         productName: 'Gaming Plus Pro',
-        providerName: 'Timwe',
+        providerName: 'Provider 1',
         contractDate: '2024-01-20',
-        serviceType: 'Suscripción',
-        status: 'Cancelada',
+        serviceType: 'Subscription',
+        status: 'Cancelled',
         contractChannel: 'SMS',
         cancellationChannel: 'SMS',
         cancellationDate: '2024-03-10'
@@ -49,7 +49,7 @@ const mockUserData: Record<string, UserInfo> = {
         providerName: 'Provider 2',
         contractDate: '2024-03-01',
         serviceType: 'On-demand',
-        status: 'Activa',
+        status: 'Active',
         contractChannel: 'WIFI'
       }
     ]
@@ -60,19 +60,19 @@ const mockUserData: Record<string, UserInfo> = {
       {
         id: '4',
         productName: 'Video Streaming Pro',
-        providerName: 'Digital Virgo',
+        providerName: 'Provider 2',
         contractDate: '2024-03-05',
-        serviceType: 'Suscripción',
-        status: 'En trial',
-        contractChannel: 'Híbrido'
+        serviceType: 'Subscription',
+        status: 'In trial',
+        contractChannel: 'Hybrid'
       },
       {
         id: '5',
         productName: 'News Premium',
-        providerName: 'Timwe',
+        providerName: 'Provider 1',
         contractDate: '2024-02-28',
-        serviceType: 'Suscripción',
-        status: 'Cancelación programada',
+        serviceType: 'Subscription',
+        status: 'Scheduled cancellation',
         contractChannel: 'USSD'
       }
     ]
@@ -119,7 +119,7 @@ export default function CustomerCare() {
           sub.id === subscriptionId
             ? {
                 ...sub,
-                status: 'Cancelada' as const,
+                status: 'Cancelled' as const,
                 cancellationChannel: 'Customer Care' as const,
                 cancellationDate: new Date().toISOString().split('T')[0]
               }
@@ -143,20 +143,20 @@ export default function CustomerCare() {
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case 'Activa': return <CheckCircle className="h-4 w-4 text-green-600" />;
-      case 'Cancelada': return <XCircle className="h-4 w-4 text-red-600" />;
-      case 'Cancelación programada': return <Clock className="h-4 w-4 text-yellow-600" />;
-      case 'En trial': return <AlertCircle className="h-4 w-4 text-blue-600" />;
+      case 'Active': return <CheckCircle className="h-4 w-4 text-green-600" />;
+      case 'Cancelled': return <XCircle className="h-4 w-4 text-red-600" />;
+      case 'Scheduled cancellation': return <Clock className="h-4 w-4 text-yellow-600" />;
+      case 'In trial': return <AlertCircle className="h-4 w-4 text-blue-600" />;
       default: return <AlertCircle className="h-4 w-4 text-gray-600" />;
     }
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'Activa': return 'bg-green-100 text-green-800';
-      case 'Cancelada': return 'bg-red-100 text-red-800';
-      case 'Cancelación programada': return 'bg-yellow-100 text-yellow-800';
-      case 'En trial': return 'bg-blue-100 text-blue-800';
+      case 'Active': return 'bg-green-100 text-green-800';
+      case 'Cancelled': return 'bg-red-100 text-red-800';
+      case 'Scheduled cancellation': return 'bg-yellow-100 text-yellow-800';
+      case 'In trial': return 'bg-blue-100 text-blue-800';
       default: return 'bg-gray-100 text-gray-800';
     }
   };
@@ -168,15 +168,15 @@ export default function CustomerCare() {
       case 'SAT PUSH': return 'bg-green-100 text-green-800';
       case 'SMS': return 'bg-orange-100 text-orange-800';
       case 'USSD': return 'bg-pink-100 text-pink-800';
-      case 'Híbrido': return 'bg-indigo-100 text-indigo-800';
+      case 'Hybrid': return 'bg-indigo-100 text-indigo-800';
       default: return 'bg-gray-100 text-gray-800';
     }
   };
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('es-ES', {
+    return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
-      month: 'long',
+      month: 'short',
       day: 'numeric'
     });
   };
@@ -266,19 +266,19 @@ export default function CustomerCare() {
                           <h5 className="text-lg font-medium text-gray-900">{subscription.productName}</h5>
                           <span className={`inline-flex items-center px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(subscription.status)}`}>
                             {getStatusIcon(subscription.status)}
-                            Blocked
+                            <span className="ml-1">{subscription.status}</span>
                           </span>
                           {subscription.isBlocked && (
                             <span className="inline-flex items-center px-2 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-800">
                               <Ban className="h-3 w-3 mr-1" />
-                              Bloqueado
+                              Blocked
                             </span>
                           )}
                         </div>
-                        <p className="text-sm text-gray-600 mb-3">Proveedor: {subscription.providerName}</p>
+                        <p className="text-sm text-gray-600 mb-3">Provider: {subscription.providerName}</p>
                       </div>
 
-                      {subscription.status === 'Activa' && !subscription.isBlocked && (
+                      {subscription.status === 'Active' && !subscription.isBlocked && (
                         <div className="flex items-center space-x-2">
                           <button
                             onClick={() => handleCancelSubscription(subscription.id)}
@@ -314,7 +314,7 @@ export default function CustomerCare() {
                         </p>
                       </div>
 
-                      {subscription.serviceType === 'Suscripción' && (
+                      {subscription.serviceType === 'Subscription' && (
                         <div>
                           <span className="text-sm font-medium text-gray-500">Contract channel:</span>
                           <p className="text-sm mt-1">
@@ -325,7 +325,7 @@ export default function CustomerCare() {
                         </div>
                       )}
 
-                      {subscription.status === 'Cancelada' && subscription.cancellationChannel && (
+                      {subscription.status === 'Cancelled' && subscription.cancellationChannel && (
                         <>
                           <div>
                             <span className="text-sm font-medium text-gray-500">Cancellation channel:</span>
