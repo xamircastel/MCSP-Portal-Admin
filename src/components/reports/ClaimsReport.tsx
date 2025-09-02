@@ -10,10 +10,10 @@ const mockClaimsData = {
 };
 
 const mockClaimsTrend = [
-  { month: 'Ene', claims: 180, resolved: 165, pending: 15 },
+  { month: 'Jan', claims: 180, resolved: 165, pending: 15 },
   { month: 'Feb', claims: 220, resolved: 205, pending: 15 },
   { month: 'Mar', claims: 190, resolved: 185, pending: 5 },
-  { month: 'Abr', claims: 250, resolved: 240, pending: 10 },
+  { month: 'Apr', claims: 250, resolved: 240, pending: 10 },
   { month: 'May', claims: 200, resolved: 190, pending: 10 },
   { month: 'Jun', claims: 200, resolved: 195, pending: 5 }
 ];
@@ -25,11 +25,11 @@ const mockClaimsByProvider = [
 ];
 
 const mockClaimsByCategory = [
-  { category: 'Juegos', claims: 380, percentage: 30.6 },
+  { category: 'Games', claims: 380, percentage: 30.6 },
   { category: 'Videos', claims: 290, percentage: 23.4 },
-  { category: 'Música', claims: 220, percentage: 17.7 },
-  { category: 'Libros', claims: 180, percentage: 14.5 },
-  { category: 'Otros', claims: 170, percentage: 13.7 }
+  { category: 'Music', claims: 220, percentage: 17.7 },
+  { category: 'Books', claims: 180, percentage: 14.5 },
+  { category: 'Others', claims: 170, percentage: 13.7 }
 ];
 
 const mockClaimsByProduct = [
@@ -52,11 +52,11 @@ export default function ClaimsReport() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold text-gray-900">Reclamaciones</h1>
+        <h1 className="text-3xl font-bold text-gray-900">Claims</h1>
         <div className="flex items-center space-x-4">
           <button className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center space-x-2">
             <Download className="h-4 w-4" />
-            <span>Exportar</span>
+            <span>Export</span>
           </button>
         </div>
       </div>
@@ -74,7 +74,7 @@ export default function ClaimsReport() {
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Total Reclamaciones</p>
+              <p className="text-sm font-medium text-gray-600">Total Claims</p>
               <p className="text-2xl font-bold text-gray-900">
                 {mockClaimsData.totalClaims.toLocaleString()}
               </p>
@@ -86,14 +86,14 @@ export default function ClaimsReport() {
           <div className="mt-4 flex items-center">
             <TrendingUp className="h-4 w-4 text-green-500 mr-1 rotate-180" />
             <span className="text-sm font-medium text-green-600">{mockClaimsData.claimsGrowth}%</span>
-            <span className="text-sm text-gray-500 ml-1">vs mes anterior</span>
+            <span className="text-sm text-gray-500 ml-1">vs previous month</span>
           </div>
         </div>
 
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Tasa de Resolución</p>
+              <p className="text-sm font-medium text-gray-600">Resolution Rate</p>
               <p className="text-2xl font-bold text-gray-900">{mockClaimsData.resolutionRate}%</p>
             </div>
             <div className="p-3 rounded-lg bg-green-50 text-green-600">
@@ -103,29 +103,29 @@ export default function ClaimsReport() {
           <div className="mt-4 flex items-center">
             <TrendingUp className="h-4 w-4 text-green-500 mr-1" />
             <span className="text-sm font-medium text-green-600">+2.1%</span>
-            <span className="text-sm text-gray-500 ml-1">vs mes anterior</span>
+            <span className="text-sm text-gray-500 ml-1">vs previous month</span>
           </div>
         </div>
 
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Tiempo Promedio</p>
-              <p className="text-2xl font-bold text-gray-900">{mockClaimsData.avgResolutionTime} días</p>
+              <p className="text-sm font-medium text-gray-600">Average Time</p>
+              <p className="text-2xl font-bold text-gray-900">{mockClaimsData.avgResolutionTime} days</p>
             </div>
             <div className="p-3 rounded-lg bg-blue-50 text-blue-600">
               <AlertTriangle className="h-6 w-6" />
             </div>
           </div>
           <div className="mt-4">
-            <span className="text-sm text-gray-500">Resolución promedio</span>
+            <span className="text-sm text-gray-500">Average resolution</span>
           </div>
         </div>
 
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Pendientes</p>
+              <p className="text-sm font-medium text-gray-600">Pending</p>
               <p className="text-2xl font-bold text-gray-900">
                 {mockClaimsTrend[mockClaimsTrend.length - 1].pending}
               </p>
@@ -135,14 +135,14 @@ export default function ClaimsReport() {
             </div>
           </div>
           <div className="mt-4">
-            <span className="text-sm text-gray-500">Sin resolver</span>
+            <span className="text-sm text-gray-500">Unresolved</span>
           </div>
         </div>
       </div>
 
       {/* Claims Trend */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-        <h3 className="text-lg font-medium text-gray-900 mb-6">Evolución de Reclamaciones</h3>
+        <h3 className="text-lg font-medium text-gray-900 mb-6">Claims Evolution</h3>
 
         <div className="relative h-64">
           <div className="absolute inset-0 flex items-end justify-between space-x-2">
@@ -159,7 +159,7 @@ export default function ClaimsReport() {
                   <div
                     className="w-2 bg-gradient-to-t from-green-500 to-green-400 rounded-t-lg transition-all duration-500"
                     style={{ height: `${(item.resolved / maxClaims) * 200}px` }}
-                    title={`Resueltas: ${item.resolved.toLocaleString()}`}
+                    title={`Resolved: ${item.resolved.toLocaleString()}`}
                   ></div>
                 </div>
                 <div className="mt-2 text-xs font-medium text-gray-600">{item.month}</div>
@@ -173,11 +173,11 @@ export default function ClaimsReport() {
         <div className="flex items-center justify-center space-x-6 mt-6">
           <div className="flex items-center space-x-2">
             <div className="w-4 h-4 bg-orange-500 rounded"></div>
-            <span className="text-sm text-gray-600">Total Reclamaciones</span>
+            <span className="text-sm text-gray-600">Total Claims</span>
           </div>
           <div className="flex items-center space-x-2">
             <div className="w-4 h-4 bg-green-500 rounded"></div>
-            <span className="text-sm text-gray-600">Resueltas</span>
+            <span className="text-sm text-gray-600">Resolved</span>
           </div>
         </div>
       </div>
@@ -186,7 +186,7 @@ export default function ClaimsReport() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* By Provider */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-          <h3 className="text-lg font-medium text-gray-900 mb-6">Reclamaciones por Proveedor</h3>
+          <h3 className="text-lg font-medium text-gray-900 mb-6">Claims by Provider</h3>
           
           <div className="space-y-4">
             {mockClaimsByProvider.map((item, index) => (
@@ -215,7 +215,7 @@ export default function ClaimsReport() {
 
         {/* By Category */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-          <h3 className="text-lg font-medium text-gray-900 mb-6">Reclamaciones por Categoría</h3>
+          <h3 className="text-lg font-medium text-gray-900 mb-6">Claims by Category</h3>
           
           <div className="space-y-4">
             {mockClaimsByCategory.map((item, index) => (
@@ -238,23 +238,23 @@ export default function ClaimsReport() {
 
       {/* Top Products with Claims */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-        <h3 className="text-lg font-medium text-gray-900 mb-6">Productos con Más Reclamaciones</h3>
+        <h3 className="text-lg font-medium text-gray-900 mb-6">Products with Most Claims</h3>
         
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead className="bg-gray-50">
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Producto
+                  Product
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Proveedor
+                  Provider
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Reclamaciones
+                  Claims
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  % del Total
+                  % of Total
                 </th>
               </tr>
             </thead>
