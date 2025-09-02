@@ -19,8 +19,8 @@ const mockSubscriptionTrend = [
 ];
 
 const mockProviderBreakdown = [
-  { provider: 'Digital Virgo', subscriptions: 1850, cancellations: 680, churn: 5.2 },
-  { provider: 'Timwe', subscriptions: 1420, cancellations: 520, churn: 6.1 },
+  { provider: 'Newry', subscriptions: 1850, cancellations: 680, churn: 5.2 },
+  { provider: 'Provider 1', subscriptions: 1420, cancellations: 520, churn: 6.1 },
   { provider: 'Provider 2', subscriptions: 1010, cancellations: 450, churn: 6.8 }
 ];
 
