@@ -32,7 +32,9 @@ export default function Sidebar() {
   return (
     <div className="w-64 bg-white shadow-lg border-r border-gray-200">
       <div className="flex items-center justify-center h-16 px-4 border-b border-gray-200">
-        <img src="/LogoA1.png" alt="MSCP Admin" className="h-10 w-auto" />
+        <div className="w-10 h-10 bg-gradient-to-br from-red-500 to-gray-800 rounded-lg flex items-center justify-center">
+          <span className="text-white font-bold text-sm">A1</span>
+        </div>
       </div>
       
       <nav className="mt-8 px-4">

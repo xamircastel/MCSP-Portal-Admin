@@ -41,7 +41,9 @@ export default function LoginPage() {
         <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
           <div className="text-center mb-8">
             <div className="flex justify-center mb-4">
-              <img src="/LogoA1.png" alt="MSCP Admin" className="h-16 w-auto" />
+              <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-gray-800 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-2xl">A1</span>
+              </div>
             </div>
             <h1 className="text-2xl font-bold text-gray-900 mb-2">
               MSCP Admin Portal
