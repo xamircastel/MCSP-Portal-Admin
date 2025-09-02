@@ -79,7 +79,7 @@ export default function UsersReport() {
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Nuevos Usuarios</p>
+              <p className="text-sm font-medium text-gray-600">New Users</p>
               <p className="text-2xl font-bold text-gray-900">
                 {mockUserData.newUsers.toLocaleString()}
               </p>
@@ -89,14 +89,14 @@ export default function UsersReport() {
             </div>
           </div>
           <div className="mt-4">
-            <span className="text-sm text-gray-500">Este mes</span>
+            <span className="text-sm text-gray-500">This month</span>
           </div>
         </div>
 
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Cancelaciones</p>
+              <p className="text-sm font-medium text-gray-600">Cancellations</p>
               <p className="text-2xl font-bold text-gray-900">
                 {mockUserData.cancelledUsers.toLocaleString()}
               </p>
@@ -106,14 +106,14 @@ export default function UsersReport() {
             </div>
           </div>
           <div className="mt-4">
-            <span className="text-sm text-gray-500">Este mes</span>
+            <span className="text-sm text-gray-500">This month</span>
           </div>
         </div>
 
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Crecimiento Neto</p>
+              <p className="text-sm font-medium text-gray-600">Net Growth</p>
               <p className="text-2xl font-bold text-gray-900">
                 +{(mockUserData.newUsers - mockUserData.cancelledUsers).toLocaleString()}
               </p>
@@ -123,14 +123,14 @@ export default function UsersReport() {
             </div>
           </div>
           <div className="mt-4">
-            <span className="text-sm text-gray-500">Nuevos - Cancelaciones</span>
+            <span className="text-sm text-gray-500">New - Cancellations</span>
           </div>
         </div>
       </div>
 
       {/* User Evolution Chart */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-        <h3 className="text-lg font-medium text-gray-900 mb-6">Evolución de la Base Activa</h3>
+        <h3 className="text-lg font-medium text-gray-900 mb-6">Active User Base Evolution</h3>
 
         <div className="relative h-64">
           <div className="absolute inset-0 flex items-end justify-between space-x-2">
@@ -141,19 +141,19 @@ export default function UsersReport() {
                   <div
                     className="flex-1 bg-gradient-to-t from-blue-500 to-blue-400 rounded-t-lg transition-all duration-500"
                     style={{ height: `${(item.active / maxUsers) * 200}px` }}
-                    title={`Activos: ${item.active.toLocaleString()}`}
+                    title={`Active: ${item.active.toLocaleString()}`}
                   ></div>
                   {/* New Users Bar */}
                   <div
                     className="w-2 bg-gradient-to-t from-green-500 to-green-400 rounded-t-lg transition-all duration-500"
                     style={{ height: `${(item.new / 4000) * 200}px` }}
-                    title={`Nuevos: ${item.new.toLocaleString()}`}
+                    title={`New: ${item.new.toLocaleString()}`}
                   ></div>
                   {/* Cancelled Users Bar */}
                   <div
                     className="w-2 bg-gradient-to-t from-red-500 to-red-400 rounded-t-lg transition-all duration-500"
                     style={{ height: `${(item.cancelled / 2000) * 200}px` }}
-                    title={`Cancelados: ${item.cancelled.toLocaleString()}`}
+                    title={`Cancelled: ${item.cancelled.toLocaleString()}`}
                   ></div>
                 </div>
                 <div className="mt-2 text-xs font-medium text-gray-600">{item.month}</div>
@@ -167,22 +167,22 @@ export default function UsersReport() {
         <div className="flex items-center justify-center space-x-6 mt-6">
           <div className="flex items-center space-x-2">
             <div className="w-4 h-4 bg-blue-500 rounded"></div>
-            <span className="text-sm text-gray-600">Usuarios Activos</span>
+            <span className="text-sm text-gray-600">Active Users</span>
           </div>
           <div className="flex items-center space-x-2">
             <div className="w-4 h-4 bg-green-500 rounded"></div>
-            <span className="text-sm text-gray-600">Nuevos Usuarios</span>
+            <span className="text-sm text-gray-600">New Users</span>
           </div>
           <div className="flex items-center space-x-2">
             <div className="w-4 h-4 bg-red-500 rounded"></div>
-            <span className="text-sm text-gray-600">Cancelaciones</span>
+            <span className="text-sm text-gray-600">Cancellations</span>
           </div>
         </div>
       </div>
 
       {/* User Distribution */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-        <h3 className="text-lg font-medium text-gray-900 mb-6">Distribución de Usuarios por Categoría</h3>
+        <h3 className="text-lg font-medium text-gray-900 mb-6">User Distribution by Category</h3>
         
         <div className="space-y-4">
           {mockUserDistribution.map((item, index) => (
