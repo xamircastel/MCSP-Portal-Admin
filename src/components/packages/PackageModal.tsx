@@ -170,7 +170,7 @@ Fecha de solicitud: ${new Date().toLocaleString()}
       <div className="bg-white rounded-xl shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
         <div className="flex items-center justify-between p-6 border-b border-gray-200">
           <h2 className="text-xl font-semibold text-gray-900">
-            {pkg ? 'Editar Paquete' : 'Crear Nuevo Paquete Comercial'}
+            {pkg ? 'Edit Package' : 'Create New Commercial Package'}
           </h2>
           <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
             <X className="h-6 w-6" />
@@ -183,12 +183,12 @@ Fecha de solicitud: ${new Date().toLocaleString()}
             <AlertCircle className="h-5 w-5 text-blue-600 mt-0.5 mr-3" />
             <div>
               <h3 className="text-sm font-medium text-blue-800">
-                Proceso de Creación de Paquetes
+                Package Creation Process
               </h3>
               <p className="text-sm text-blue-700 mt-1">
-                Al enviar este formulario se generará un ticket de soporte para el equipo central. 
-                El paquete no se creará automáticamente, sino que requerirá configuración manual 
-                según los acuerdos comerciales establecidos.
+                When submitting this form, a support ticket will be generated for the central team. 
+                The package will not be created automatically, but will require manual configuration 
+                according to established commercial agreements.
               </p>
             </div>
           </div>
@@ -198,14 +198,14 @@ Fecha de solicitud: ${new Date().toLocaleString()}
           {/* Package Name */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Nombre del Paquete *
+              Package Name *
             </label>
             <input
               type="text"
               value={formData.name}
               onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-              placeholder="Ej: Entertainment Bundle Pro"
+              placeholder="e.g.: Entertainment Bundle Pro"
               required
             />
           </div>
@@ -213,8 +213,8 @@ Fecha de solicitud: ${new Date().toLocaleString()}
           {/* Base Product Selection */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Producto Base * 
-              <span className="text-xs text-gray-500 ml-1">(Define la lógica de flujos de negocio)</span>
+              Base Product * 
+              <span className="text-xs text-gray-500 ml-1">(Defines business flow logic)</span>
             </label>
             <select
               value={formData.baseProductId}
@@ -222,7 +222,7 @@ Fecha de solicitud: ${new Date().toLocaleString()}
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
               required
             >
-              <option value="">Seleccionar producto base</option>
+              <option value="">Select base product</option>
               {baseProductOptions.map((product) => (
                 <option key={product.id} value={product.id}>
                   {product.name} - {product.provider} ({product.type})
@@ -234,7 +234,7 @@ Fecha de solicitud: ${new Date().toLocaleString()}
               <div className="mt-2 p-3 bg-green-50 border border-green-200 rounded-lg">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-green-800">Producto Base Seleccionado:</p>
+                    <p className="text-sm font-medium text-green-800">Selected Base Product:</p>
                     <p className="text-sm text-green-700">{selectedBaseProduct.name} - {selectedBaseProduct.provider}</p>
                   </div>
                   <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getProductTypeColor(selectedBaseProduct.type)}`}>
@@ -248,14 +248,14 @@ Fecha de solicitud: ${new Date().toLocaleString()}
           {/* Complementary Products */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Productos Complementarios
-              <span className="text-xs text-gray-500 ml-1">(Opcional - Se agregan al paquete)</span>
+              Complementary Products
+              <span className="text-xs text-gray-500 ml-1">(Optional - Added to package)</span>
             </label>
             
             {/* Selected Complementary Products */}
             {selectedComplementaryProducts.length > 0 && (
               <div className="mb-4 space-y-2">
-                <p className="text-sm font-medium text-gray-600">Productos seleccionados:</p>
+                <p className="text-sm font-medium text-gray-600">Selected products:</p>
                 {selectedComplementaryProducts.map((product) => (
                   <div key={product.id} className="flex items-center justify-between p-3 bg-blue-50 border border-blue-200 rounded-lg">
                     <div className="flex items-center space-x-3">
@@ -285,7 +285,7 @@ Fecha de solicitud: ${new Date().toLocaleString()}
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
                 <input
                   type="text"
-                  placeholder="Buscar productos para agregar..."
+                  placeholder="Search products to add..."
                   value={productSearch}
                   onChange={(e) => setProductSearch(e.target.value)}
                   className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
@@ -314,7 +314,7 @@ Fecha de solicitud: ${new Date().toLocaleString()}
                   ))
                 ) : (
                   <p className="text-sm text-gray-500 text-center py-4">
-                    {productSearch ? 'No se encontraron productos' : 'Busca productos para agregar al paquete'}
+                    {productSearch ? 'No products found' : 'Search products to add to package'}
                   </p>
                 )}
               </div>
@@ -336,7 +336,7 @@ Fecha de solicitud: ${new Date().toLocaleString()}
                 className="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded"
               />
               <label htmlFor="includeTelco" className="text-sm font-medium text-gray-700">
-                Incluir Servicios de Telecomunicaciones
+                Include Telecommunications Services
               </label>
             </div>
 
@@ -346,18 +346,18 @@ Fecha de solicitud: ${new Date().toLocaleString()}
                   <div className="flex items-center space-x-2 mb-2">
                     <AlertCircle className="h-4 w-4 text-orange-600" />
                     <p className="text-sm font-medium text-orange-800">
-                      Servicios sujetos a acuerdos con MNO
+                      Services subject to MNO agreements
                     </p>
                   </div>
                   <p className="text-xs text-orange-700">
-                    La inclusión de servicios de telecomunicaciones requiere validación de acuerdos técnicos y comerciales con la Operadora Móvil.
+                    The inclusion of telecommunications services requires validation of technical and commercial agreements with the Mobile Operator.
                   </p>
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Datos Móviles
+                      Mobile Data
                     </label>
                     <input
                       type="text"
@@ -367,13 +367,13 @@ Fecha de solicitud: ${new Date().toLocaleString()}
                         telcoServices: { ...prev.telcoServices, data: e.target.value }
                       }))}
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                      placeholder="Ej: 10 GB"
+                      placeholder="e.g.: 10 GB"
                     />
                   </div>
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Minutos de Voz
+                      Voice Minutes
                     </label>
                     <input
                       type="text"
@@ -383,7 +383,7 @@ Fecha de solicitud: ${new Date().toLocaleString()}
                         telcoServices: { ...prev.telcoServices, voice: e.target.value }
                       }))}
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                      placeholder="Ej: 500 minutos"
+                      placeholder="e.g.: 500 minutes"
                     />
                   </div>
 
@@ -399,7 +399,7 @@ Fecha de solicitud: ${new Date().toLocaleString()}
                         telcoServices: { ...prev.telcoServices, sms: e.target.value }
                       }))}
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                      placeholder="Ej: 100 SMS"
+                      placeholder="e.g.: 100 SMS"
                     />
                   </div>
                 </div>
@@ -410,7 +410,7 @@ Fecha de solicitud: ${new Date().toLocaleString()}
           {/* Package Price */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Precio del Paquete ($) *
+              Package Price ($) *
             </label>
             <input
               type="number"
@@ -426,14 +426,14 @@ Fecha de solicitud: ${new Date().toLocaleString()}
           {/* Description */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Descripción Adicional
+              Additional Description
             </label>
             <textarea
               value={formData.description}
               onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
               rows={3}
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-              placeholder="Información adicional para el equipo de soporte..."
+              placeholder="Additional information for support team..."
             />
           </div>
 
@@ -445,9 +445,9 @@ Fecha de solicitud: ${new Date().toLocaleString()}
                 onClick={() => setShowTicketPreview(!showTicketPreview)}
                 className="flex items-center space-x-2 text-sm font-medium text-gray-700 hover:text-gray-900"
               >
-                <span>Vista previa del ticket de soporte</span>
+                <span>Support ticket preview</span>
                 <span className="text-xs text-gray-500">
-                  {showTicketPreview ? '(Ocultar)' : '(Mostrar)'}
+                  {showTicketPreview ? '(Hide)' : '(Show)'}
                 </span>
               </button>
               
@@ -468,14 +468,14 @@ Fecha de solicitud: ${new Date().toLocaleString()}
               onClick={onClose}
               className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50"
             >
-              Cancelar
+              Cancel
             </button>
             <button
               type="submit"
               className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 flex items-center space-x-2"
             >
               <CheckCircle className="h-4 w-4" />
-              <span>{pkg ? 'Actualizar Paquete' : 'Crear Ticket de Soporte'}</span>
+              <span>{pkg ? 'Update Package' : 'Create Support Ticket'}</span>
             </button>
           </div>
         </form>
