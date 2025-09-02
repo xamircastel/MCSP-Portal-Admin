@@ -88,7 +88,7 @@ export default function ReportFilters({ type, onFiltersChange, dateRange, onDate
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 <Calendar className="h-4 w-4 inline mr-1" />
-                Start Date
+                Fecha de Inicio
               </label>
               <input
                 type="date"
@@ -100,7 +100,7 @@ export default function ReportFilters({ type, onFiltersChange, dateRange, onDate
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 <Calendar className="h-4 w-4 inline mr-1" />
-                End Date
+                Fecha de Fin
               </label>
               <input
                 type="date"
@@ -115,7 +115,7 @@ export default function ReportFilters({ type, onFiltersChange, dateRange, onDate
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Providers */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-3">Proveedor</label>
+              <label className="block text-sm font-medium text-gray-700 mb-3">Provider</label>
               <div className="space-y-2 max-h-32 overflow-y-auto">
                 {providers.map((provider) => (
                   <label key={provider} className="flex items-center">
@@ -133,7 +133,7 @@ export default function ReportFilters({ type, onFiltersChange, dateRange, onDate
 
             {/* Products */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-3">Producto</label>
+              <label className="block text-sm font-medium text-gray-700 mb-3">Product</label>
               <div className="space-y-2 max-h-32 overflow-y-auto">
                 {products.map((product) => (
                   <label key={product} className="flex items-center">
@@ -151,7 +151,7 @@ export default function ReportFilters({ type, onFiltersChange, dateRange, onDate
 
             {/* Categories */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-3">Categoría</label>
+              <label className="block text-sm font-medium text-gray-700 mb-3">Category</label>
               <div className="space-y-2 max-h-32 overflow-y-auto">
                 {categories.map((category) => (
                   <label key={category} className="flex items-center">
@@ -170,7 +170,7 @@ export default function ReportFilters({ type, onFiltersChange, dateRange, onDate
             {/* Markets (only for complete filters) */}
             {type === 'complete' && (
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-3">Mercado</label>
+                <label className="block text-sm font-medium text-gray-700 mb-3">Market</label>
                 <div className="space-y-2">
                   {markets.map((market) => (
                     <label key={market} className="flex items-center">
