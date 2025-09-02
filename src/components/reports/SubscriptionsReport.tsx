@@ -10,10 +10,10 @@ const mockSubscriptionData = {
 };
 
 const mockSubscriptionTrend = [
-  { month: 'Ene', subscriptions: 3800, cancellations: 1400, churn: 6.2 },
+  { month: 'Jan', subscriptions: 3800, cancellations: 1400, churn: 6.2 },
   { month: 'Feb', subscriptions: 4100, cancellations: 1600, churn: 6.8 },
   { month: 'Mar', subscriptions: 3900, cancellations: 1300, churn: 5.5 },
-  { month: 'Abr', subscriptions: 4300, cancellations: 1500, churn: 6.0 },
+  { month: 'Apr', subscriptions: 4300, cancellations: 1500, churn: 6.0 },
   { month: 'May', subscriptions: 4500, cancellations: 1700, churn: 6.3 },
   { month: 'Jun', subscriptions: 4280, cancellations: 1650, churn: 5.8 }
 ];
@@ -36,11 +36,11 @@ export default function SubscriptionsReport() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold text-gray-900">Suscripciones y Cancelaciones</h1>
+        <h1 className="text-3xl font-bold text-gray-900">Subscriptions & Cancellations</h1>
         <div className="flex items-center space-x-4">
           <button className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center space-x-2">
             <Download className="h-4 w-4" />
-            <span>Exportar</span>
+            <span>Export</span>
           </button>
         </div>
       </div>
@@ -58,7 +58,7 @@ export default function SubscriptionsReport() {
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Nuevas Suscripciones</p>
+              <p className="text-sm font-medium text-gray-600">New Subscriptions</p>
               <p className="text-2xl font-bold text-gray-900">
                 {mockSubscriptionData.newSubscriptions.toLocaleString()}
               </p>
@@ -68,14 +68,14 @@ export default function SubscriptionsReport() {
             </div>
           </div>
           <div className="mt-4">
-            <span className="text-sm text-gray-500">Este período</span>
+            <span className="text-sm text-gray-500">This period</span>
           </div>
         </div>
 
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Cancelaciones</p>
+              <p className="text-sm font-medium text-gray-600">Cancellations</p>
               <p className="text-2xl font-bold text-gray-900">
                 {mockSubscriptionData.cancellations.toLocaleString()}
               </p>
@@ -85,14 +85,14 @@ export default function SubscriptionsReport() {
             </div>
           </div>
           <div className="mt-4">
-            <span className="text-sm text-gray-500">Este período</span>
+            <span className="text-sm text-gray-500">This period</span>
           </div>
         </div>
 
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Tasa de Cancelación</p>
+              <p className="text-sm font-medium text-gray-600">Churn Rate</p>
               <p className="text-2xl font-bold text-gray-900">{mockSubscriptionData.churnRate}%</p>
             </div>
             <div className="p-3 rounded-lg bg-orange-50 text-orange-600">
@@ -102,14 +102,14 @@ export default function SubscriptionsReport() {
           <div className="mt-4 flex items-center">
             <TrendingDown className="h-4 w-4 text-red-500 mr-1" />
             <span className="text-sm font-medium text-red-600">-0.5%</span>
-            <span className="text-sm text-gray-500 ml-1">vs mes anterior</span>
+            <span className="text-sm text-gray-500 ml-1">vs previous month</span>
           </div>
         </div>
 
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Crecimiento Neto</p>
+              <p className="text-sm font-medium text-gray-600">Net Growth</p>
               <p className="text-2xl font-bold text-gray-900">
                 +{mockSubscriptionData.netGrowth.toLocaleString()}
               </p>
@@ -119,14 +119,14 @@ export default function SubscriptionsReport() {
             </div>
           </div>
           <div className="mt-4">
-            <span className="text-sm text-gray-500">Suscripciones - Cancelaciones</span>
+            <span className="text-sm text-gray-500">Subscriptions - Cancellations</span>
           </div>
         </div>
       </div>
 
       {/* Subscription vs Cancellation Trend */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-        <h3 className="text-lg font-medium text-gray-900 mb-6">Comparativo Suscripciones vs Cancelaciones</h3>
+        <h3 className="text-lg font-medium text-gray-900 mb-6">Subscriptions vs Cancellations Comparison</h3>
 
         <div className="relative h-64">
           <div className="absolute inset-0 flex items-end justify-between space-x-2">
@@ -137,13 +137,13 @@ export default function SubscriptionsReport() {
                   <div
                     className="flex-1 bg-gradient-to-t from-green-500 to-green-400 rounded-t-lg transition-all duration-500"
                     style={{ height: `${(item.subscriptions / maxValue) * 200}px` }}
-                    title={`Suscripciones: ${item.subscriptions.toLocaleString()}`}
+                    title={`Subscriptions: ${item.subscriptions.toLocaleString()}`}
                   ></div>
                   {/* Cancellations Bar */}
                   <div
                     className="flex-1 bg-gradient-to-t from-red-500 to-red-400 rounded-t-lg transition-all duration-500"
                     style={{ height: `${(item.cancellations / maxValue) * 200}px` }}
-                    title={`Cancelaciones: ${item.cancellations.toLocaleString()}`}
+                    title={`Cancellations: ${item.cancellations.toLocaleString()}`}
                   ></div>
                 </div>
                 <div className="mt-2 text-xs font-medium text-gray-600">{item.month}</div>
@@ -159,18 +159,18 @@ export default function SubscriptionsReport() {
         <div className="flex items-center justify-center space-x-6 mt-6">
           <div className="flex items-center space-x-2">
             <div className="w-4 h-4 bg-green-500 rounded"></div>
-            <span className="text-sm text-gray-600">Nuevas Suscripciones</span>
+            <span className="text-sm text-gray-600">New Subscriptions</span>
           </div>
           <div className="flex items-center space-x-2">
             <div className="w-4 h-4 bg-red-500 rounded"></div>
-            <span className="text-sm text-gray-600">Cancelaciones</span>
+            <span className="text-sm text-gray-600">Cancellations</span>
           </div>
         </div>
       </div>
 
       {/* Churn Rate Trend */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-        <h3 className="text-lg font-medium text-gray-900 mb-6">Evolución de la Tasa de Cancelación (Churn Rate)</h3>
+        <h3 className="text-lg font-medium text-gray-900 mb-6">Churn Rate Evolution</h3>
         
         <div className="space-y-4">
           {mockSubscriptionTrend.map((item, index) => (
