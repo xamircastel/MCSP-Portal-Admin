@@ -115,7 +115,7 @@ export default function ReportFilters({ type, onFiltersChange, dateRange, onDate
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Providers */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-3">Provider</label>
+              <label className="block text-sm font-medium text-gray-700 mb-3">Proveedor</label>
               <div className="space-y-2 max-h-32 overflow-y-auto">
                 {providers.map((provider) => (
                   <label key={provider} className="flex items-center">
@@ -133,7 +133,7 @@ export default function ReportFilters({ type, onFiltersChange, dateRange, onDate
 
             {/* Products */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-3">Product</label>
+              <label className="block text-sm font-medium text-gray-700 mb-3">Producto</label>
               <div className="space-y-2 max-h-32 overflow-y-auto">
                 {products.map((product) => (
                   <label key={product} className="flex items-center">
@@ -151,7 +151,7 @@ export default function ReportFilters({ type, onFiltersChange, dateRange, onDate
 
             {/* Categories */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-3">Category</label>
+              <label className="block text-sm font-medium text-gray-700 mb-3">Categoría</label>
               <div className="space-y-2 max-h-32 overflow-y-auto">
                 {categories.map((category) => (
                   <label key={category} className="flex items-center">
@@ -170,7 +170,7 @@ export default function ReportFilters({ type, onFiltersChange, dateRange, onDate
             {/* Markets (only for complete filters) */}
             {type === 'complete' && (
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-3">Market</label>
+                <label className="block text-sm font-medium text-gray-700 mb-3">Mercado</label>
                 <div className="space-y-2">
                   {markets.map((market) => (
                     <label key={market} className="flex items-center">
@@ -193,7 +193,7 @@ export default function ReportFilters({ type, onFiltersChange, dateRange, onDate
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {/* Charge Types */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-3">Tipo de Cobro</label>
+                <label className="block text-sm font-medium text-gray-700 mb-3">Charge Type</label>
                 <div className="space-y-2">
                   {chargeTypes.map((type) => (
                     <label key={type} className="flex items-center">
@@ -211,7 +211,7 @@ export default function ReportFilters({ type, onFiltersChange, dateRange, onDate
 
               {/* Channels */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-3">Canal de Contratación</label>
+                <label className="block text-sm font-medium text-gray-700 mb-3">Contracting Channel</label>
                 <div className="space-y-2 max-h-32 overflow-y-auto">
                   {channels.map((channel) => (
                     <label key={channel} className="flex items-center">
@@ -247,7 +247,7 @@ export default function ReportFilters({ type, onFiltersChange, dateRange, onDate
 
               {/* Charge Periods */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-3">Periodicidad de Cobro</label>
+                <label className="block text-sm font-medium text-gray-700 mb-3">Charge Frequency</label>
                 <div className="space-y-2">
                   {chargePeriods.map((period) => (
                     <label key={period} className="flex items-center">
@@ -272,14 +272,14 @@ export default function ReportFilters({ type, onFiltersChange, dateRange, onDate
               className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 flex items-center space-x-2"
             >
               <RotateCcw className="h-4 w-4" />
-              <span>Limpiar</span>
+              <span>Clear</span>
             </button>
             <button
               onClick={applyFilters}
               className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 flex items-center space-x-2"
             >
               <Filter className="h-4 w-4" />
-              <span>Aplicar Filtros</span>
+              <span>Apply Filters</span>
             </button>
           </div>
         </div>
