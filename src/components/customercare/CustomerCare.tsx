@@ -88,7 +88,7 @@ export default function CustomerCare() {
 
   const handleSearch = async () => {
     if (!phoneNumber.trim()) {
-      setSearchError('Por favor ingrese un número de teléfono');
+      setSearchError('Please enter a phone number');
       return;
     }
 
@@ -104,7 +104,7 @@ export default function CustomerCare() {
         setSubscriptions(userData.subscriptions);
         setSearchError('');
       } else {
-        setSearchError('No se encontró información para este número de teléfono');
+        setSearchError('No information found for this phone number');
         setUserInfo(null);
         setSubscriptions([]);
       }
@@ -113,7 +113,7 @@ export default function CustomerCare() {
   };
 
   const handleCancelSubscription = (subscriptionId: string) => {
-    if (window.confirm('¿Está seguro de que desea cancelar esta suscripción?')) {
+    if (window.confirm('Are you sure you want to cancel this subscription?')) {
       setSubscriptions(subs =>
         subs.map(sub =>
           sub.id === subscriptionId
@@ -130,7 +130,7 @@ export default function CustomerCare() {
   };
 
   const handleBlockProduct = (subscriptionId: string) => {
-    if (window.confirm('¿Está seguro de que desea bloquear este producto para el usuario? Esta acción impedirá futuras contrataciones.')) {
+    if (window.confirm('Are you sure you want to block this product for the user? This action will prevent future subscriptions.')) {
       setSubscriptions(subs =>
         subs.map(sub =>
           sub.id === subscriptionId
@@ -187,20 +187,20 @@ export default function CustomerCare() {
         <h1 className="text-3xl font-bold text-gray-900">Customer Care</h1>
         <div className="flex items-center space-x-2 text-sm text-gray-500">
           <Phone className="h-4 w-4" />
-          <span>Gestión de atención al cliente</span>
+          <span>Customer service management</span>
         </div>
       </div>
 
       {/* Search Section */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-        <h3 className="text-lg font-medium text-gray-900 mb-4">Búsqueda de Usuario</h3>
+        <h3 className="text-lg font-medium text-gray-900 mb-4">User Search</h3>
         
         <div className="flex items-center space-x-4">
           <div className="flex-1 relative">
             <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
             <input
               type="tel"
-              placeholder="Ingrese el número de línea móvil (ej: 573001234567)"
+              placeholder="Enter mobile phone number (e.g.: 573001234567)"
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
               className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
@@ -215,12 +215,12 @@ export default function CustomerCare() {
             {isSearching ? (
               <>
                 <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
-                <span>Buscando...</span>
+                <span>Searching...</span>
               </>
             ) : (
               <>
                 <Search className="h-4 w-4" />
-                <span>Buscar</span>
+                <span>Search</span>
               </>
             )}
           </button>
@@ -242,17 +242,17 @@ export default function CustomerCare() {
                 <User className="h-6 w-6 text-green-600" />
               </div>
               <div>
-                <h3 className="text-lg font-medium text-gray-900">Información del Usuario</h3>
-                <p className="text-sm text-gray-600">Número de línea: {userInfo.phoneNumber}</p>
+                <h3 className="text-lg font-medium text-gray-900">User Information</h3>
+                <p className="text-sm text-gray-600">Phone number: {userInfo.phoneNumber}</p>
               </div>
             </div>
           </div>
 
           <div className="p-6">
             <div className="flex items-center justify-between mb-6">
-              <h4 className="text-md font-medium text-gray-800">Suscripciones del Usuario</h4>
+              <h4 className="text-md font-medium text-gray-800">User Subscriptions</h4>
               <span className="text-sm text-gray-500">
-                {subscriptions.length} suscripción{subscriptions.length !== 1 ? 'es' : ''} encontrada{subscriptions.length !== 1 ? 's' : ''}
+                {subscriptions.length} subscription{subscriptions.length !== 1 ? 's' : ''} found
               </span>
             </div>
 
@@ -266,7 +266,7 @@ export default function CustomerCare() {
                           <h5 className="text-lg font-medium text-gray-900">{subscription.productName}</h5>
                           <span className={`inline-flex items-center px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(subscription.status)}`}>
                             {getStatusIcon(subscription.status)}
-                            <span className="ml-1">{subscription.status}</span>
+                            Blocked
                           </span>
                           {subscription.isBlocked && (
                             <span className="inline-flex items-center px-2 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-800">
@@ -284,14 +284,14 @@ export default function CustomerCare() {
                             onClick={() => handleCancelSubscription(subscription.id)}
                             className="px-3 py-1 bg-red-600 text-white text-sm rounded-lg hover:bg-red-700 transition-colors"
                           >
-                            Cancelar
+                            Cancel
                           </button>
                           <button
                             onClick={() => handleBlockProduct(subscription.id)}
                             className="px-3 py-1 bg-gray-600 text-white text-sm rounded-lg hover:bg-gray-700 transition-colors flex items-center space-x-1"
                           >
                             <Ban className="h-3 w-3" />
-                            <span>Bloquear</span>
+                            <span>Block</span>
                           </button>
                         </div>
                       )}
@@ -299,7 +299,7 @@ export default function CustomerCare() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                       <div>
-                        <span className="text-sm font-medium text-gray-500">Fecha de contratación:</span>
+                        <span className="text-sm font-medium text-gray-500">Contract date:</span>
                         <p className="text-sm text-gray-900 mt-1 flex items-center">
                           <Calendar className="h-4 w-4 mr-1 text-gray-400" />
                           {formatDate(subscription.contractDate)}
@@ -307,7 +307,7 @@ export default function CustomerCare() {
                       </div>
 
                       <div>
-                        <span className="text-sm font-medium text-gray-500">Tipo de servicio:</span>
+                        <span className="text-sm font-medium text-gray-500">Service type:</span>
                         <p className="text-sm text-gray-900 mt-1 flex items-center">
                           <Package className="h-4 w-4 mr-1 text-gray-400" />
                           {subscription.serviceType}
@@ -316,7 +316,7 @@ export default function CustomerCare() {
 
                       {subscription.serviceType === 'Suscripción' && (
                         <div>
-                          <span className="text-sm font-medium text-gray-500">Canal de contratación:</span>
+                          <span className="text-sm font-medium text-gray-500">Contract channel:</span>
                           <p className="text-sm mt-1">
                             <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getChannelColor(subscription.contractChannel)}`}>
                               {subscription.contractChannel}
@@ -328,7 +328,7 @@ export default function CustomerCare() {
                       {subscription.status === 'Cancelada' && subscription.cancellationChannel && (
                         <>
                           <div>
-                            <span className="text-sm font-medium text-gray-500">Canal de cancelación:</span>
+                            <span className="text-sm font-medium text-gray-500">Cancellation channel:</span>
                             <p className="text-sm mt-1">
                               <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-800">
                                 {subscription.cancellationChannel}
@@ -337,7 +337,7 @@ export default function CustomerCare() {
                           </div>
                           {subscription.cancellationDate && (
                             <div>
-                              <span className="text-sm font-medium text-gray-500">Fecha de cancelación:</span>
+                              <span className="text-sm font-medium text-gray-500">Cancellation date:</span>
                               <p className="text-sm text-gray-900 mt-1 flex items-center">
                                 <Calendar className="h-4 w-4 mr-1 text-gray-400" />
                                 {formatDate(subscription.cancellationDate)}
@@ -354,10 +354,10 @@ export default function CustomerCare() {
               <div className="text-center py-12">
                 <Package className="h-12 w-12 mx-auto text-gray-400 mb-4" />
                 <h3 className="text-lg font-medium text-gray-900 mb-2">
-                  No se encontraron suscripciones
+                  No subscriptions found
                 </h3>
                 <p className="text-gray-500">
-                  Este usuario no tiene suscripciones activas o históricas.
+                  This user has no active or historical subscriptions.
                 </p>
               </div>
             )}
@@ -367,7 +367,7 @@ export default function CustomerCare() {
 
       {/* Demo Numbers Helper */}
       <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-        <h4 className="text-sm font-medium text-blue-800 mb-2">Números de prueba disponibles:</h4>
+        <h4 className="text-sm font-medium text-blue-800 mb-2">Available test numbers:</h4>
         <div className="flex flex-wrap gap-2">
           {Object.keys(mockUserData).map((phone) => (
             <button
