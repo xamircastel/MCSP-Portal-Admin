@@ -25,13 +25,13 @@ interface FilterOption {
 }
 
 const productCategories = [
-  'Juegos', 'Videos', 'Libros', 'Adulto', 'Música',
-  'Noticias y Actualidad', 'TV & Streaming', 'Educación y Formación',
-  'Aplicaciones y Herramientas', 'Arte y Creatividad'
+  'Games', 'Videos', 'Books', 'Adult', 'Music',
+  'News & Current Affairs', 'TV & Streaming', 'Education & Training',
+  'Applications & Tools', 'Art & Creativity'
 ];
 
 const additionalSections = [
-  'Packs', 'Promociones', 'Ofertas', 'Preguntas frecuentes', 'Contacto'
+  'Packs', 'Promotions', 'Offers', 'FAQ', 'Contact'
 ];
 
 const mockMenuOptions: MenuOption[] = [
@@ -79,10 +79,10 @@ const mockFeaturedImages: FeaturedImage[] = [
 ];
 
 const mockFilterOptions: FilterOption[] = [
-  { id: '1', name: 'Categorías', enabled: true },
-  { id: '2', name: 'Gama de precios', enabled: true },
-  { id: '3', name: 'Popularidad / Calificaciones', enabled: false },
-  { id: '4', name: 'Fecha de lanzamiento', enabled: false }
+  { id: '1', name: 'Categories', enabled: true },
+  { id: '2', name: 'Price Range', enabled: true },
+  { id: '3', name: 'Popularity / Ratings', enabled: false },
+  { id: '4', name: 'Release Date', enabled: false }
 ];
 
 export default function CMS() {
@@ -441,41 +441,41 @@ export default function CMS() {
                 <div>
                   <h4 className="text-md font-medium text-gray-800 mb-4">Filter Panel Preview</h4>
                   <div className="bg-white border border-gray-200 rounded-lg p-4">
-                    <h5 className="font-medium text-gray-900 mb-3">Filtros Avanzados</h5>
+                    <h5 className="font-medium text-gray-900 mb-3">Advanced Filters</h5>
                     <div className="space-y-3">
                       {filterOptions.filter(f => f.enabled).map((filter) => (
                         <div key={filter.id} className="border-b border-gray-100 pb-2">
                           <label className="block text-sm font-medium text-gray-700 mb-1">
                             {filter.name}
                           </label>
-                          {filter.name === 'Categorías' && (
+                          {filter.name === 'Categories' && (
                             <select className="w-full text-sm border border-gray-300 rounded px-2 py-1">
-                              <option>Todas las categorías</option>
-                              <option>Juegos</option>
+                              <option>All categories</option>
+                              <option>Games</option>
                               <option>Videos</option>
-                              <option>Música</option>
+                              <option>Music</option>
                             </select>
                           )}
-                          {filter.name === 'Gama de precios' && (
+                          {filter.name === 'Price Range' && (
                             <div className="flex space-x-2">
                               <input type="number" placeholder="Min" className="w-1/2 text-sm border border-gray-300 rounded px-2 py-1" />
                               <input type="number" placeholder="Max" className="w-1/2 text-sm border border-gray-300 rounded px-2 py-1" />
                             </div>
                           )}
-                          {filter.name === 'Popularidad / Calificaciones' && (
+                          {filter.name === 'Popularity / Ratings' && (
                             <select className="w-full text-sm border border-gray-300 rounded px-2 py-1">
-                              <option>Todas las calificaciones</option>
-                              <option>5 estrellas</option>
-                              <option>4+ estrellas</option>
-                              <option>3+ estrellas</option>
+                              <option>All ratings</option>
+                              <option>5 stars</option>
+                              <option>4+ stars</option>
+                              <option>3+ stars</option>
                             </select>
                           )}
-                          {filter.name === 'Fecha de lanzamiento' && (
+                          {filter.name === 'Release Date' && (
                             <select className="w-full text-sm border border-gray-300 rounded px-2 py-1">
-                              <option>Cualquier fecha</option>
-                              <option>Último mes</option>
-                              <option>Últimos 3 meses</option>
-                              <option>Último año</option>
+                              <option>Any date</option>
+                              <option>Last month</option>
+                              <option>Last 3 months</option>
+                              <option>Last year</option>
                             </select>
                           )}
                         </div>
