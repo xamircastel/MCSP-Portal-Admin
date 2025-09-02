@@ -518,25 +518,25 @@ export default function Packages() {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                     <div className="flex items-center justify-end space-x-2">
-                    Package
+                      <button
                         onClick={() => handleView(pkg)}
                         className="text-gray-400 hover:text-gray-600"
-                    Base Product
+                      >
                         <Eye className="h-4 w-4" />
                       </button>
-                    Complementary Products
+                      <button
                         onClick={() => handleEdit(pkg)}
                         className="text-gray-400 hover:text-blue-600"
-                    Telco Services
+                      >
                         <Edit className="h-4 w-4" />
                       </button>
-                    Price
+                      <button
                         onClick={() => handleDelete(pkg.id)}
                         className="text-gray-400 hover:text-red-600"
-                    Status
+                      >
                         <Trash2 className="h-4 w-4" />
                       </button>
-                    Actions
+                    </div>
                   </td>
                 </tr>
               ))}
