@@ -19,7 +19,7 @@ const mockChangeHistory: ChangeRecord[] = [
     id: '1',
     actionType: 'create',
     entityType: 'provider',
-    entityName: 'Digital Virgo',
+    entityName: 'Provider 2',
     description: 'Created new provider with API configuration',
     userId: '1',
     userName: 'admin',
@@ -44,7 +44,7 @@ const mockChangeHistory: ChangeRecord[] = [
     id: '3',
     actionType: 'create',
     entityType: 'package',
-    entityName: 'Digital Virgo Premium Bundle',
+    entityName: 'Provider 2 Premium Bundle',
     description: 'Created new package combining streaming service with telco services',
     userId: '1',
     userName: 'admin',
@@ -80,7 +80,7 @@ const mockChangeHistory: ChangeRecord[] = [
     id: '6',
     actionType: 'update',
     entityType: 'landing-page',
-    entityName: 'Timwe Pro LP',
+    entityName: 'Gaming Pro Plus LP',
     description: 'Updated landing page legal texts',
     userId: '2',
     userName: 'manager1',
@@ -151,9 +151,9 @@ export default function ChangeHistory() {
 
   const getActionText = (actionType: string) => {
     switch (actionType) {
-      case 'create': return 'Creado';
-      case 'update': return 'Modificado';
-      case 'delete': return 'Eliminado';
+      case 'create': return 'Created';
+      case 'update': return 'Modified';
+      case 'delete': return 'Deleted';
       default: return actionType;
     }
   };
@@ -201,7 +201,7 @@ export default function ChangeHistory() {
     for (let i = 0; i < 12; i++) {
       const date = new Date(currentDate.getFullYear(), currentDate.getMonth() - i, 1);
       const value = date.toISOString().substring(0, 7);
-      const label = date.toLocaleDateString('es-ES', { year: 'numeric', month: 'long' });
+      const label = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
       options.push({ value, label });
     }
     
@@ -212,10 +212,10 @@ export default function ChangeHistory() {
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-gray-900">Historial de Cambios</h2>
+        <h2 className="text-2xl font-bold text-gray-900">Change History</h2>
         <div className="flex items-center space-x-2 text-sm text-gray-500">
           <Clock className="h-4 w-4" />
-          <span>{filteredRecords.length} registros encontrados</span>
+          <span>{filteredRecords.length} records found</span>
         </div>
       </div>
 
@@ -226,7 +226,7 @@ export default function ChangeHistory() {
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               <Calendar className="h-4 w-4 inline mr-1" />
-              Mes de consulta
+              Query Month
             </label>
             <select
               value={selectedMonth}
@@ -245,11 +245,11 @@ export default function ChangeHistory() {
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               <Search className="h-4 w-4 inline mr-1" />
-              Buscar
+              Search
             </label>
             <input
               type="text"
-              placeholder="Buscar por entidad, descripción o usuario..."
+              placeholder="Search by entity, description or user..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
@@ -260,18 +260,18 @@ export default function ChangeHistory() {
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               <Filter className="h-4 w-4 inline mr-1" />
-              Tipo de entidad
+              Entity Type
             </label>
             <select
               value={filterEntityType}
               onChange={(e) => setFilterEntityType(e.target.value)}
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
             >
-              <option value="all">Todos</option>
-              <option value="provider">Proveedores</option>
-              <option value="product">Productos</option>
-              <option value="package">Paquetes</option>
-              <option value="user">Usuarios</option>
+              <option value="all">All</option>
+              <option value="provider">Providers</option>
+              <option value="product">Products</option>
+              <option value="package">Packages</option>
+              <option value="user">Users</option>
               <option value="api-endpoint">API Endpoints</option>
               <option value="landing-page">Landing Pages</option>
               <option value="ticket">Tickets</option>
@@ -281,17 +281,17 @@ export default function ChangeHistory() {
           {/* Action Type Filter */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Tipo de acción
+              Action Type
             </label>
             <select
               value={filterActionType}
               onChange={(e) => setFilterActionType(e.target.value)}
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
             >
-              <option value="all">Todas</option>
-              <option value="create">Creación</option>
-              <option value="update">Modificación</option>
-              <option value="delete">Eliminación</option>
+              <option value="all">All</option>
+              <option value="create">Creation</option>
+              <option value="update">Modification</option>
+              <option value="delete">Deletion</option>
             </select>
           </div>
         </div>
@@ -301,7 +301,7 @@ export default function ChangeHistory() {
       <div className="bg-white rounded-xl shadow-sm border border-gray-200">
         <div className="p-6 border-b border-gray-200">
           <h3 className="text-lg font-medium text-gray-900">
-            Registros de {generateMonthOptions().find(opt => opt.value === selectedMonth)?.label}
+            Records for {generateMonthOptions().find(opt => opt.value === selectedMonth)?.label}
           </h3>
         </div>
 
@@ -361,10 +361,10 @@ export default function ChangeHistory() {
             <div className="p-12 text-center">
               <Clock className="h-12 w-12 mx-auto text-gray-400 mb-4" />
               <h3 className="text-lg font-medium text-gray-900 mb-2">
-                No se encontraron registros
+                No records found
               </h3>
               <p className="text-gray-500">
-                No hay cambios registrados para el período seleccionado con los filtros aplicados.
+                No changes recorded for the selected period with the applied filters.
               </p>
             </div>
           )}
@@ -377,7 +377,7 @@ export default function ChangeHistory() {
           <div className="bg-white rounded-xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between p-6 border-b border-gray-200">
               <h2 className="text-xl font-semibold text-gray-900">
-                Detalle del Cambio
+                Change Detail
               </h2>
               <button 
                 onClick={() => setSelectedRecord(null)}
@@ -411,13 +411,14 @@ export default function ChangeHistory() {
               {/* Description */}
               <div>
                 <h4 className="text-sm font-medium text-gray-700 mb-2">Descripción</h4>
+                <h4 className="text-sm font-medium text-gray-700 mb-2">Description</h4>
                 <p className="text-gray-900">{selectedRecord.description}</p>
               </div>
 
               {/* Details */}
               {selectedRecord.details && (
                 <div>
-                  <h4 className="text-sm font-medium text-gray-700 mb-2">Detalles adicionales</h4>
+                  <h4 className="text-sm font-medium text-gray-700 mb-2">Additional Details</h4>
                   <p className="text-gray-600">{selectedRecord.details}</p>
                 </div>
               )}
@@ -425,7 +426,7 @@ export default function ChangeHistory() {
               {/* User and Timestamp */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <h4 className="text-sm font-medium text-gray-700 mb-2">Usuario responsable</h4>
+                  <h4 className="text-sm font-medium text-gray-700 mb-2">Responsible User</h4>
                   <div className="space-y-1">
                     <p className="text-gray-900 font-medium">{selectedRecord.userName}</p>
                     <p className="text-sm text-gray-600">{selectedRecord.userEmail}</p>
@@ -433,7 +434,7 @@ export default function ChangeHistory() {
                 </div>
                 
                 <div>
-                  <h4 className="text-sm font-medium text-gray-700 mb-2">Fecha y hora</h4>
+                  <h4 className="text-sm font-medium text-gray-700 mb-2">Date and Time</h4>
                   <p className="text-gray-900">{formatDate(selectedRecord.timestamp)}</p>
                 </div>
               </div>
@@ -444,7 +445,7 @@ export default function ChangeHistory() {
                 onClick={() => setSelectedRecord(null)}
                 className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700"
               >
-                Cerrar
+                Close
               </button>
             </div>
           </div>
