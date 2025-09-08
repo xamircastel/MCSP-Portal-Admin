@@ -21,8 +21,6 @@ interface FormData {
   description: string;
   status: 'Active' | 'Inactive';
   shortCode: string;
-  icon: File | null;
-  images: File[];
 
   // Step 2: Keywords
   activationKeywords: Array<{
@@ -57,6 +55,10 @@ interface FormData {
   // Step 5: Packaging
   category: string;
   subcategory: string;
+  productType: 'VAS' | 'OTT';
+  chargeType: 'subscription' | 'ondemand';
+  revenueShare: string;
+  gracePeriod: string;
 }
 
 const categories = [
@@ -216,7 +218,11 @@ export default function ProductWizard({ providers, onClose, onSave }: ProductWiz
 
     // Step 5
     category: '',
-    subcategory: ''
+    subcategory: '',
+    productType: 'VAS',
+    chargeType: 'subscription',
+    revenueShare: '',
+    gracePeriod: ''
   });
 
   const [newKeyword, setNewKeyword] = useState('');
@@ -234,7 +240,7 @@ export default function ProductWizard({ providers, onClose, onSave }: ProductWiz
       case 4:
         return formData.contentType === 'portal' ? !!formData.portalUrl : !!formData.apkFile;
       case 5:
-        return !!(formData.category && formData.subcategory);
+        return !!(formData.category && formData.subcategory && formData.productType && formData.chargeType && formData.revenueShare);
       default:
         return false;
     }
@@ -898,6 +904,93 @@ export default function ProductWizard({ providers, onClose, onSave }: ProductWiz
             <div className="space-y-6">
               <h3 className="text-lg font-medium text-gray-900">Product Packaging</h3>
               
+              {/* Product Type and Charge Type */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Product Type *
+                  </label>
+                  <select
+                    value={formData.productType}
+                    onChange={(e) => setFormData(prev => ({ ...prev, productType: e.target.value as 'VAS' | 'OTT' }))}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    required
+                  >
+                    <option value="VAS">VAS (Value Added Service)</option>
+                    <option value="OTT">OTT (Over The Top)</option>
+                  </select>
+                  <p className="mt-1 text-xs text-gray-500">
+                    {formData.productType === 'VAS' 
+                      ? 'Traditional mobile services with carrier billing'
+                      : 'Internet-based services delivered over mobile networks'
+                    }
+                  </p>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Charge Type *
+                  </label>
+                  <select
+                    value={formData.chargeType}
+                    onChange={(e) => setFormData(prev => ({ ...prev, chargeType: e.target.value as 'subscription' | 'ondemand' }))}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    required
+                  >
+                    <option value="subscription">Subscription</option>
+                    <option value="ondemand">On-Demand Purchase</option>
+                  </select>
+                  <p className="mt-1 text-xs text-gray-500">
+                    {formData.chargeType === 'subscription' 
+                      ? 'Recurring charges based on the configured period'
+                      : 'One-time purchase for immediate access'
+                    }
+                  </p>
+                </div>
+              </div>
+
+              {/* Revenue Share and Grace Period */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Revenue Share (%) *
+                  </label>
+                  <input
+                    type="number"
+                    min="0"
+                    max="100"
+                    step="0.1"
+                    value={formData.revenueShare}
+                    onChange={(e) => setFormData(prev => ({ ...prev, revenueShare: e.target.value }))}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    placeholder="70.0"
+                    required
+                  />
+                  <p className="mt-1 text-xs text-gray-500">
+                    Percentage of revenue that goes to the provider
+                  </p>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Grace Period (days)
+                  </label>
+                  <input
+                    type="number"
+                    min="0"
+                    max="30"
+                    value={formData.gracePeriod}
+                    onChange={(e) => setFormData(prev => ({ ...prev, gracePeriod: e.target.value }))}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    placeholder="0"
+                  />
+                  <p className="mt-1 text-xs text-gray-500">
+                    Days before first charge is applied (0 = immediate charge)
+                  </p>
+                </div>
+              </div>
+
+              {/* Category and Subcategory */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -958,12 +1051,24 @@ export default function ProductWizard({ providers, onClose, onSave }: ProductWiz
                     <span className="ml-2 text-gray-900">{formData.providerId}</span>
                   </div>
                   <div>
+                    <span className="font-medium text-gray-700">Type:</span>
+                    <span className="ml-2 text-gray-900">{formData.productType}</span>
+                  </div>
+                  <div>
+                    <span className="font-medium text-gray-700">Charge Type:</span>
+                    <span className="ml-2 text-gray-900">{formData.chargeType === 'subscription' ? 'Subscription' : 'On-Demand'}</span>
+                  </div>
+                  <div>
                     <span className="font-medium text-gray-700">Category:</span>
                     <span className="ml-2 text-gray-900">{formData.category} → {formData.subcategory}</span>
                   </div>
                   <div>
                     <span className="font-medium text-gray-700">Price:</span>
                     <span className="ml-2 text-gray-900">${formData.pricing.fullPrice}</span>
+                  </div>
+                  <div>
+                    <span className="font-medium text-gray-700">Revenue Share:</span>
+                    <span className="ml-2 text-gray-900">{formData.revenueShare}%</span>
                   </div>
                   <div>
                     <span className="font-medium text-gray-700">Keywords:</span>
@@ -973,6 +1078,12 @@ export default function ProductWizard({ providers, onClose, onSave }: ProductWiz
                     <span className="font-medium text-gray-700">Content:</span>
                     <span className="ml-2 text-gray-900">{formData.contentType === 'portal' ? 'Portal Access' : 'Mobile App'}</span>
                   </div>
+                  {formData.gracePeriod && (
+                    <div>
+                      <span className="font-medium text-gray-700">Grace Period:</span>
+                      <span className="ml-2 text-gray-900">{formData.gracePeriod} days</span>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
