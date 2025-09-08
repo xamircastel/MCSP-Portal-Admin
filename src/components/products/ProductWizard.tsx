@@ -470,65 +470,6 @@ export default function ProductWizard({ providers, onClose, onSave }: ProductWiz
                   />
                 </div>
               </div>
-
-              {/* Icon Upload */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Product Icon
-                </label>
-                <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
-                  <Upload className="mx-auto h-8 w-8 text-gray-400 mb-2" />
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={(e) => setFormData(prev => ({ ...prev, icon: e.target.files?.[0] || null }))}
-                    className="hidden"
-                    id="icon-upload"
-                  />
-                  <label htmlFor="icon-upload" className="cursor-pointer text-sm text-gray-600 hover:text-gray-800">
-                    {formData.icon ? formData.icon.name : 'Click to upload icon'}
-                  </label>
-                </div>
-              </div>
-
-              {/* Images Upload */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Product Images
-                </label>
-                <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
-                  <Upload className="mx-auto h-8 w-8 text-gray-400 mb-2" />
-                  <input
-                    type="file"
-                    accept="image/*"
-                    multiple
-                    onChange={(e) => handleImageUpload(e.target.files)}
-                    className="hidden"
-                    id="images-upload"
-                  />
-                  <label htmlFor="images-upload" className="cursor-pointer text-sm text-gray-600 hover:text-gray-800">
-                    Click to upload images (multiple files allowed)
-                  </label>
-                </div>
-                
-                {formData.images.length > 0 && (
-                  <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
-                    {formData.images.map((image, index) => (
-                      <div key={index} className="relative">
-                        <div className="aspect-square bg-gray-100 rounded-lg flex items-center justify-center">
-                          <span className="text-xs text-gray-500 text-center p-2">{image.name}</span>
-                        </div>
-                        <button
-                          onClick={() => removeImage(index)}
-                          className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600"
-                        >
-                          <Trash2 className="h-3 w-3" />
-                        </button>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
             </div>
           )}
 
