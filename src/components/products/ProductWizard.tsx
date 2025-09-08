@@ -221,6 +221,7 @@ export default function ProductWizard({ providers, onClose, onSave }: ProductWiz
 
   const [newKeyword, setNewKeyword] = useState('');
   const [newCancellationKeyword, setNewCancellationKeyword] = useState('');
+  const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'saved'>('idle');
 
   const isStepValid = (step: number): boolean => {
     switch (step) {
@@ -237,6 +238,20 @@ export default function ProductWizard({ providers, onClose, onSave }: ProductWiz
       default:
         return false;
     }
+  };
+
+  const handleSaveStep = async () => {
+    setSaveStatus('saving');
+    
+    // Simulate save operation
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    setSaveStatus('saved');
+    
+    // Reset status after 2 seconds
+    setTimeout(() => {
+      setSaveStatus('idle');
+    }, 2000);
   };
 
   const handleNext = () => {
@@ -962,6 +977,36 @@ export default function ProductWizard({ providers, onClose, onSave }: ProductWiz
               </div>
             </div>
           )}
+
+          {/* Save Button for Current Step */}
+          <div className="flex justify-center pt-6 border-t border-gray-200">
+            <button
+              type="button"
+              onClick={handleSaveStep}
+              disabled={saveStatus === 'saving'}
+              className={`px-6 py-2 rounded-lg transition-colors flex items-center space-x-2 ${
+                saveStatus === 'saved'
+                  ? 'bg-green-100 text-green-800 border border-green-200'
+                  : 'bg-blue-600 text-white hover:bg-blue-700'
+              } disabled:opacity-50 disabled:cursor-not-allowed`}
+            >
+              {saveStatus === 'saving' ? (
+                <>
+                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                  <span>Saving...</span>
+                </>
+              ) : saveStatus === 'saved' ? (
+                <>
+                  <Check className="h-4 w-4" />
+                  <span>Saved Successfully</span>
+                </>
+              ) : (
+                <>
+                  <span>Save Step {currentStep}</span>
+                </>
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Navigation */}
