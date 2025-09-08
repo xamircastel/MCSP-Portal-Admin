@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Search, Filter, Eye, Edit, Trash2, Package, Plus } from 'lucide-react';
-import ProductModal from './ProductModal';
+import ProductWizard from './ProductWizard';
 
 interface Product {
   id: string;
@@ -81,7 +81,7 @@ const mockProviders: Provider[] = [
 export default function ProductsOverview() {
   const [products, setProducts] = useState<Product[]>(mockProducts);
   const [providers] = useState<Provider[]>(mockProviders);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isWizardOpen, setIsWizardOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterType, setFilterType] = useState<'all' | 'VAS' | 'OTT'>('all');
@@ -95,7 +95,7 @@ export default function ProductsOverview() {
 
   const handleEdit = (product: Product) => {
     setSelectedProduct(product);
-    setIsModalOpen(true);
+    setIsWizardOpen(true);
   };
 
   const handleDelete = (id: string) => {
@@ -135,7 +135,7 @@ export default function ProductsOverview() {
             <span>{products.length} total products</span>
           </div>
           <button
-            onClick={() => setIsModalOpen(true)}
+            onClick={() => setIsWizardOpen(true)}
             className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center space-x-2"
           >
             <Plus className="h-4 w-4" />
@@ -326,12 +326,11 @@ export default function ProductsOverview() {
         </div>
       </div>
 
-      {isModalOpen && (
-        <ProductModal
-          product={selectedProduct}
+      {isWizardOpen && (
+        <ProductWizard
           providers={providers}
           onClose={() => {
-            setIsModalOpen(false);
+            setIsWizardOpen(false);
             setSelectedProduct(null);
           }}
           onSave={handleSave}

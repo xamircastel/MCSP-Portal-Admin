@@ -8,7 +8,7 @@ interface ReportFiltersProps {
   onDateRangeChange: (dateRange: { startDate: string; endDate: string }) => void;
 }
 
-const providers = ['Digital Virgo', 'Timwe', 'Renxo'];
+const providers = ['Newry', 'Provider 1', 'Provider 2'];
 const products = ['Premium Streaming', 'Gaming Plus Pro', 'Music Unlimited'];
 const categories = ['Juegos', 'Videos', 'Música', 'Libros', 'Adulto'];
 const markets = ['Prepago', 'Postpago'];
