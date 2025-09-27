@@ -42,16 +42,16 @@ export default function LoginPage() {
           <div className="text-center mb-8">
             <div className="flex justify-center mb-4">
               <img 
-                src="/LogoA1 copy copy.png" 
-                alt="MSCP Admin" 
-                className="w-16 h-16 object-contain"
+                src="/newry-logo.png" 
+                alt="Newry Global Media" 
+                className="w-24 h-24 object-contain"
               />
             </div>
             <h1 className="text-2xl font-bold text-gray-900 mb-2">
-              MSCP Admin Portal
+              Newry Global Media
             </h1>
             <p className="text-gray-600">
-              Content Management Platform
+              Admin Portal
             </p>
           </div>
 

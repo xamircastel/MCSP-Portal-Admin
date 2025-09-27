@@ -33,9 +33,9 @@ export default function Sidebar() {
     <div className="w-64 bg-white shadow-lg border-r border-gray-200">
       <div className="flex items-center justify-center h-16 px-4 border-b border-gray-200">
         <img 
-          src="/LogoA1 copy copy.png" 
-          alt="MSCP Admin" 
-          className="w-10 h-10 object-contain"
+          src="/newry-logo.png" 
+          alt="Newry Global Media" 
+          className="w-12 h-12 object-contain"
         />
       </div>
       
