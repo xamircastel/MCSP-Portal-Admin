@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { LayoutDashboard, Users, Package, Settings, Code, FileText, Calculator, MessageSquare, Shield, Box, Monitor, Headphones, BarChart3, ChevronDown, ChevronRight, DollarSign, UserPlus, Ban, AlertTriangle, Fuel as Funnel } from 'lucide-react';
 import { useLanguage } from '../../contexts/LanguageContext';
+import newryLogo from '/newry-logo.png';
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
@@ -33,7 +34,7 @@ export default function Sidebar() {
     <div className="w-64 bg-white shadow-lg border-r border-gray-200">
       <div className="flex items-center justify-center h-16 px-4 border-b border-gray-200">
         <img 
-          src="/newry-logo.png" 
+          src={newryLogo} 
           alt="Newry Global Media" 
           className="w-12 h-12 object-contain"
         />

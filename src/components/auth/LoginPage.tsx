@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Shield, Eye, EyeOff } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useLanguage } from '../../contexts/LanguageContext';
+import newryLogo from '/newry-logo.png';
 
 export default function LoginPage() {
   const [username, setUsername] = useState('');
@@ -42,7 +43,7 @@ export default function LoginPage() {
           <div className="text-center mb-8">
             <div className="flex justify-center mb-4">
               <img 
-                src="/newry-logo.png" 
+                src={newryLogo} 
                 alt="Newry Global Media" 
                 className="w-24 h-24 object-contain"
               />
