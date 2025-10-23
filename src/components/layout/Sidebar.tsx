@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, Users, Package, Settings, Code, FileText, Calculator, MessageSquare, Shield, Box, Monitor, Headphones, BarChart3, ChevronDown, ChevronRight, DollarSign, UserPlus, Ban, AlertTriangle, Fuel as Funnel } from 'lucide-react';
-import { useLanguage } from '../../contexts/LanguageContext';
+import { LayoutDashboard, Users, Package, Code, FileText, Calculator, MessageSquare, Shield, Box, Monitor, Headphones, BarChart3, ChevronDown, ChevronRight, DollarSign, UserPlus, Ban, AlertTriangle, Fuel as Funnel, Trophy } from 'lucide-react';
 import newryLogo from '/newry-logo.png';
 
 const navigation = [
@@ -12,6 +11,7 @@ const navigation = [
   { name: 'API Manager', href: '/api-manager', icon: Code },
   { name: 'LP Builder', href: '/lp-builder', icon: FileText },
   { name: 'Reconciliator', href: '/reconciliator', icon: Calculator },
+  { name: 'Engagement', href: '/engagement', icon: Trophy },
   { name: 'CMS', href: '/cms', icon: Monitor },
   { name: 'Tickets', href: '/communication', icon: MessageSquare },
   { name: 'Customer Care', href: '/customer-care', icon: Headphones },

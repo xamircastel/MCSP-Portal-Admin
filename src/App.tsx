@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from './components/auth/LoginPage';
 import Dashboard from './components/dashboard/Dashboard';
@@ -8,6 +7,7 @@ import ProductsOverview from './components/products/ProductsOverview';
 import APIManager from './components/api/APIManager';
 import LPBuilder from './components/lpbuilder/LPBuilder';
 import Reconciliator from './components/reconciliator/Reconciliator';
+import Engagement from './components/engagement/Engagement';
 import Communication from './components/communication/Communication';
 import UsersRoles from './components/users/UsersRoles';
 import Packages from './components/packages/Packages';
@@ -41,6 +41,7 @@ function AppContent() {
         <Route path="/api-manager" element={<APIManager />} />
         <Route path="/lp-builder" element={<LPBuilder />} />
         <Route path="/reconciliator" element={<Reconciliator />} />
+        <Route path="/engagement" element={<Engagement />} />
         <Route path="/communication" element={<Communication />} />
         <Route path="/cms" element={<CMS />} />
         <Route path="/customer-care" element={<CustomerCare />} />
