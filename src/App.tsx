@@ -22,6 +22,8 @@ import SubscriptionsReport from './components/reports/SubscriptionsReport';
 import BlocksReport from './components/reports/BlocksReport';
 import ClaimsReport from './components/reports/ClaimsReport';
 import FunnelReport from './components/reports/FunnelReport';
+import Segmentation from './components/segmentation/Segmentation';
+import CampaignManager from './components/campaigns/CampaignManager';
 
 function AppContent() {
   const { isAuthenticated } = useAuth();
@@ -46,6 +48,8 @@ function AppContent() {
         <Route path="/cms" element={<CMS />} />
         <Route path="/customer-care" element={<CustomerCare />} />
         <Route path="/users-roles" element={<UsersRoles />} />
+        <Route path="/segmentation" element={<Segmentation />} />
+        <Route path="/campaigns" element={<CampaignManager />} />
         <Route path="/reports/financial" element={<FinancialReport />} />
         <Route path="/reports/users" element={<UsersReport />} />
         <Route path="/reports/subscriptions" element={<SubscriptionsReport />} />

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, Users, Package, Code, FileText, Calculator, MessageSquare, Shield, Box, Monitor, Headphones, BarChart3, ChevronDown, ChevronRight, DollarSign, UserPlus, Ban, AlertTriangle, Fuel as Funnel, Trophy } from 'lucide-react';
+import { LayoutDashboard, Users, Package, Code, FileText, Calculator, MessageSquare, Shield, Box, Monitor, Headphones, BarChart3, ChevronDown, ChevronRight, DollarSign, UserPlus, Ban, AlertTriangle, Fuel as Funnel, Trophy, Target, Megaphone } from 'lucide-react';
 import newryLogo from '/newry-logo.png';
 
 const navigation = [
@@ -8,6 +8,8 @@ const navigation = [
   { name: 'Providers', href: '/providers', icon: Users },
   { name: 'Products', href: '/products', icon: Package },
   { name: 'Packages', href: '/packages', icon: Box },
+  { name: 'Segmentation', href: '/segmentation', icon: Target },
+  { name: 'Campaign Manager', href: '/campaigns', icon: Megaphone },
   { name: 'API Manager', href: '/api-manager', icon: Code },
   { name: 'LP Builder', href: '/lp-builder', icon: FileText },
   { name: 'Reconciliator', href: '/reconciliator', icon: Calculator },
