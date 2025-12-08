@@ -12,7 +12,6 @@ interface PushCampaign {
   delivered: number;
   impressions: number;
   clicks: number;
-  conversions: number;
   scheduledDate?: string;
 }
 
@@ -29,7 +28,6 @@ const mockPushCampaigns: PushCampaign[] = [
     delivered: 77360,
     impressions: 62088,
     clicks: 3170,
-    conversions: 892,
     scheduledDate: '2025-10-25 10:00'
   },
   {
@@ -44,7 +42,6 @@ const mockPushCampaigns: PushCampaign[] = [
     delivered: 33950,
     impressions: 27160,
     clicks: 1086,
-    conversions: 245,
     scheduledDate: '2025-10-29 14:00'
   }
 ];

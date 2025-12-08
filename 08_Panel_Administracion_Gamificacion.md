@@ -80,7 +80,6 @@ El panel de administración abarca la configuración de:
 
 - Los rangos no deben superponerse
 - Punto máximo de un nivel debe ser menor que punto mínimo del siguiente
-- Los cambios aplican inmediatamente para recalcular niveles de usuarios activos
 
 ### 3.2 Multiplicadores por Nivel
 
@@ -493,13 +492,6 @@ AMZN-AAAA-BBBB-CCCC,31/12/2025,activo
 - Lista de participantes
 - Estadísticas de participación
 
-**Ejecución del Sorteo**:
-
-- Botón "Realizar Sorteo" (disponible después de fecha de cierre)
-- Sistema selecciona ganador aleatoriamente
-- Registro automático del ganador
-- Notificación automática al ganador
-
 **Después del Sorteo**:
 
 - Visualización del ganador
@@ -507,11 +499,13 @@ AMZN-AAAA-BBBB-CCCC,31/12/2025,activo
 - Opción de exportar resultados
 - Estado cambia a "Finalizado"
 
+> **Nota Importante**: La mecánica y ejecución del sorteo será definida e implementada según la normativa y regulación vigente de cada país. El sistema de administración no incluye funcionalidad directa para ejecutar sorteos.
+
 **Validaciones**:
 
 - No se pueden vender más tickets que el total disponible
 - Fecha de cierre debe ser anterior a fecha de sorteo
-- No se puede realizar sorteo antes de la fecha programada
+- Fecha de sorteo debe ser posterior a la fecha de cierre
 - Si no se alcanza tickets mínimos, opción de cancelar o extender
 
 ---
@@ -573,7 +567,6 @@ AMZN-AAAA-BBBB-CCCC,31/12/2025,activo
 
 El sistema solicitará confirmación antes de:
 
-- Cambiar rangos de niveles (puede afectar usuarios activos)
 - Modificar multiplicadores (impacta futuras transacciones)
 - Desactivar actividades que otorgan puntos
 - Eliminar misiones con usuarios participando
@@ -586,7 +579,6 @@ El sistema enviará alertas cuando:
 - Stock de vouchers digitales < 10%
 - Sorteo próximo a alcanzar tickets mínimos
 - Misión próxima a caducar (7 días antes)
-- Cambio de nivel de usuario (por cambios en rangos)
 
 ---
 

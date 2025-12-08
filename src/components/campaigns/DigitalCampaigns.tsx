@@ -9,10 +9,7 @@ interface DigitalCampaign {
   spent: number;
   impressions: number;
   clicks: number;
-  conversions: number;
   cpc: number;
-  cpa: number;
-  roi: number;
   lastSync: string;
 }
 
@@ -26,10 +23,7 @@ const mockDigitalCampaigns: DigitalCampaign[] = [
     spent: 1860,
     impressions: 150000,
     clicks: 3500,
-    conversions: 120,
     cpc: 0.53,
-    cpa: 15.50,
-    roi: 245,
     lastSync: '2025-10-30 14:30'
   },
   {
@@ -41,10 +35,7 @@ const mockDigitalCampaigns: DigitalCampaign[] = [
     spent: 2214,
     impressions: 200000,
     clicks: 5000,
-    conversions: 180,
     cpc: 0.44,
-    cpa: 12.30,
-    roi: 310,
     lastSync: '2025-10-30 14:28'
   },
   {
@@ -56,10 +47,7 @@ const mockDigitalCampaigns: DigitalCampaign[] = [
     spent: 1215,
     impressions: 80000,
     clicks: 2100,
-    conversions: 65,
     cpc: 0.58,
-    cpa: 18.70,
-    roi: 189,
     lastSync: '2025-10-30 10:15'
   },
   {
@@ -71,10 +59,7 @@ const mockDigitalCampaigns: DigitalCampaign[] = [
     spent: 2840,
     impressions: 350000,
     clicks: 8750,
-    conversions: 285,
     cpc: 0.32,
-    cpa: 9.96,
-    roi: 425,
     lastSync: '2025-10-30 14:30'
   }
 ];
@@ -111,10 +96,9 @@ export default function DigitalCampaigns() {
 
   const calculateMetrics = (campaign: DigitalCampaign) => {
     const ctr = campaign.impressions > 0 ? (campaign.clicks / campaign.impressions * 100).toFixed(2) : '0.00';
-    const conversionRate = campaign.clicks > 0 ? (campaign.conversions / campaign.clicks * 100).toFixed(2) : '0.00';
     const budgetSpent = campaign.budget > 0 ? (campaign.spent / campaign.budget * 100).toFixed(1) : '0.0';
     
-    return { ctr, conversionRate, budgetSpent };
+    return { ctr, budgetSpent };
   };
 
   return (
@@ -179,9 +163,6 @@ export default function DigitalCampaigns() {
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Impresiones</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Clicks</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">CTR</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Conversiones</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">CPA</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">ROI</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Acciones</th>
               </tr>
             </thead>
@@ -228,24 +209,6 @@ export default function DigitalCampaigns() {
                     </td>
                     <td className="px-6 py-4 text-sm font-medium text-blue-600">
                       {metrics.ctr}%
-                    </td>
-                    <td className="px-6 py-4">
-                      <div>
-                        <p className="text-sm font-medium text-gray-900">
-                          {campaign.conversions}
-                        </p>
-                        <p className="text-xs text-gray-500">
-                          {metrics.conversionRate}%
-                        </p>
-                      </div>
-                    </td>
-                    <td className="px-6 py-4 text-sm font-medium text-gray-900">
-                      ${campaign.cpa.toFixed(2)}
-                    </td>
-                    <td className="px-6 py-4">
-                      <span className="text-sm font-semibold text-green-600">
-                        +{campaign.roi}%
-                      </span>
                     </td>
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-2">

@@ -9,7 +9,6 @@ interface CampaignStats {
   totalCampaigns: number;
   activeCampaigns: number;
   totalReach: number;
-  avgROI: number;
 }
 
 export default function CampaignManager() {
@@ -18,8 +17,7 @@ export default function CampaignManager() {
   const stats: CampaignStats = {
     totalCampaigns: 48,
     activeCampaigns: 12,
-    totalReach: 2500000,
-    avgROI: 285
+    totalReach: 2500000
   };
 
   const tabs = [
@@ -45,7 +43,7 @@ export default function CampaignManager() {
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
           <p className="text-sm text-gray-600">Total Campañas</p>
           <p className="text-2xl font-bold text-gray-900">{stats.totalCampaigns}</p>
@@ -61,11 +59,6 @@ export default function CampaignManager() {
           <p className="text-2xl font-bold text-gray-900">
             {(stats.totalReach / 1000000).toFixed(1)}M
           </p>
-        </div>
-
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-          <p className="text-sm text-gray-600">ROI Promedio</p>
-          <p className="text-2xl font-bold text-gray-900">{stats.avgROI}%</p>
         </div>
       </div>
 
@@ -127,10 +120,6 @@ function OverviewTab() {
               <span className="text-gray-600">CTR promedio</span>
               <span className="font-semibold">2.9%</span>
             </div>
-            <div className="flex justify-between">
-              <span className="text-gray-600">ROI</span>
-              <span className="font-semibold text-green-600">+245%</span>
-            </div>
           </div>
         </div>
 
@@ -152,10 +141,6 @@ function OverviewTab() {
             <div className="flex justify-between">
               <span className="text-gray-600">CTR promedio</span>
               <span className="font-semibold">3.8%</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-gray-600">ROI</span>
-              <span className="font-semibold text-green-600">+310%</span>
             </div>
           </div>
         </div>
@@ -179,10 +164,6 @@ function OverviewTab() {
               <span className="text-gray-600">CTR promedio</span>
               <span className="font-semibold">2.4%</span>
             </div>
-            <div className="flex justify-between">
-              <span className="text-gray-600">ROI</span>
-              <span className="font-semibold text-green-600">+298%</span>
-            </div>
           </div>
         </div>
       </div>
@@ -201,8 +182,6 @@ function OverviewTab() {
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Estado</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Alcance</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">CTR</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Conversiones</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">ROI</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
@@ -216,8 +195,6 @@ function OverviewTab() {
                 </td>
                 <td className="px-6 py-4 text-sm text-gray-600">150,000</td>
                 <td className="px-6 py-4 text-sm text-gray-600">3.2%</td>
-                <td className="px-6 py-4 text-sm text-gray-600">1,245</td>
-                <td className="px-6 py-4 text-sm font-semibold text-green-600">+315%</td>
               </tr>
               <tr className="hover:bg-gray-50">
                 <td className="px-6 py-4 text-sm font-medium text-gray-900">Sports Package Launch</td>
@@ -229,8 +206,6 @@ function OverviewTab() {
                 </td>
                 <td className="px-6 py-4 text-sm text-gray-600">500,000</td>
                 <td className="px-6 py-4 text-sm text-gray-600">2.8%</td>
-                <td className="px-6 py-4 text-sm text-gray-600">3,890</td>
-                <td className="px-6 py-4 text-sm font-semibold text-green-600">+278%</td>
               </tr>
               <tr className="hover:bg-gray-50">
                 <td className="px-6 py-4 text-sm font-medium text-gray-900">Weekend Special Push</td>
@@ -242,8 +217,6 @@ function OverviewTab() {
                 </td>
                 <td className="px-6 py-4 text-sm text-gray-600">80,000</td>
                 <td className="px-6 py-4 text-sm text-gray-600">4.1%</td>
-                <td className="px-6 py-4 text-sm text-gray-600">892</td>
-                <td className="px-6 py-4 text-sm font-semibold text-green-600">+342%</td>
               </tr>
             </tbody>
           </table>

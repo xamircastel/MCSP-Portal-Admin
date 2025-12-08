@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import NewCampaignForm from './NewCampaignForm';
 
 interface SMSCampaign {
   id: string;
@@ -9,7 +10,6 @@ interface SMSCampaign {
   sent: number;
   delivered: number;
   clicks: number;
-  conversions: number;
   scheduledDate?: string;
   createdAt: string;
 }
@@ -24,7 +24,6 @@ const mockCampaigns: SMSCampaign[] = [
     sent: 120000,
     delivered: 117960,
     clicks: 3775,
-    conversions: 1245,
     createdAt: '2025-10-28'
   },
   {
@@ -36,7 +35,6 @@ const mockCampaigns: SMSCampaign[] = [
     sent: 0,
     delivered: 0,
     clicks: 0,
-    conversions: 0,
     scheduledDate: '2025-11-01 10:00',
     createdAt: '2025-10-27'
   },
@@ -49,15 +47,15 @@ const mockCampaigns: SMSCampaign[] = [
     sent: 200000,
     delivered: 196000,
     clicks: 5684,
-    conversions: 1892,
     createdAt: '2025-10-25'
   }
 ];
 
 export default function SMSCampaigns() {
-  const [campaigns] = useState<SMSCampaign[]>(mockCampaigns);
+  const [campaigns, setCampaigns] = useState<SMSCampaign[]>(mockCampaigns);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterStatus, setFilterStatus] = useState<string>('all');
+  const [showNewCampaignForm, setShowNewCampaignForm] = useState(false);
 
   const filteredCampaigns = campaigns.filter(campaign => {
     const matchesSearch = campaign.name.toLowerCase().includes(searchTerm.toLowerCase());
@@ -92,9 +90,8 @@ export default function SMSCampaigns() {
   const calculateMetrics = (campaign: SMSCampaign) => {
     const deliveryRate = campaign.sent > 0 ? (campaign.delivered / campaign.sent * 100).toFixed(1) : '0.0';
     const ctr = campaign.delivered > 0 ? (campaign.clicks / campaign.delivered * 100).toFixed(2) : '0.00';
-    const conversionRate = campaign.clicks > 0 ? (campaign.conversions / campaign.clicks * 100).toFixed(2) : '0.00';
     
-    return { deliveryRate, ctr, conversionRate };
+    return { deliveryRate, ctr };
   };
 
   return (
@@ -128,7 +125,10 @@ export default function SMSCampaigns() {
           </div>
         </div>
 
-        <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+        <button 
+          onClick={() => setShowNewCampaignForm(true)}
+          className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+        >
           Nueva Campaña SMS
         </button>
       </div>
@@ -197,7 +197,7 @@ export default function SMSCampaigns() {
 
                 {/* Metrics */}
                 {campaign.sent > 0 && (
-                  <div className="grid grid-cols-2 md:grid-cols-6 gap-4 pt-4 border-t border-gray-200">
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4 pt-4 border-t border-gray-200">
                     <div>
                       <p className="text-xs text-gray-500 mb-1">Enviados</p>
                       <p className="text-lg font-semibold text-gray-900">
@@ -217,21 +217,6 @@ export default function SMSCampaigns() {
                         {campaign.clicks.toLocaleString()}
                       </p>
                       <p className="text-xs text-blue-600">CTR {metrics.ctr}%</p>
-                    </div>
-                    <div>
-                      <p className="text-xs text-gray-500 mb-1">Conversiones</p>
-                      <p className="text-lg font-semibold text-gray-900">
-                        {campaign.conversions.toLocaleString()}
-                      </p>
-                      <p className="text-xs text-purple-600">{metrics.conversionRate}%</p>
-                    </div>
-                    <div>
-                      <p className="text-xs text-gray-500 mb-1">CPA</p>
-                      <p className="text-lg font-semibold text-gray-900">$15.50</p>
-                    </div>
-                    <div>
-                      <p className="text-xs text-gray-500 mb-1">ROI</p>
-                      <p className="text-lg font-semibold text-green-600">+245%</p>
                     </div>
                   </div>
                 )}
@@ -265,10 +250,41 @@ export default function SMSCampaigns() {
               ? 'Intenta ajustar los filtros de búsqueda'
               : 'Comienza creando tu primera campaña SMS'}
           </p>
-          <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+          <button 
+            onClick={() => setShowNewCampaignForm(true)}
+            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+          >
             Crear Campaña SMS
           </button>
         </div>
+      )}
+
+      {/* Modal de Nueva Campaña */}
+      {showNewCampaignForm && (
+        <NewCampaignForm
+          onClose={() => setShowNewCampaignForm(false)}
+          onSubmit={(data) => {
+            // Crear nueva campaña
+            const newCampaign: SMSCampaign = {
+              id: Date.now().toString(),
+              name: data.name,
+              status: 'draft',
+              message: 'Mensaje de campaña',
+              audience: data.totalReach,
+              sent: 0,
+              delivered: 0,
+              clicks: 0,
+              scheduledDate: data.sendSchedules[0]?.date || '',
+              createdAt: new Date().toISOString().split('T')[0]
+            };
+            
+            setCampaigns([newCampaign, ...campaigns]);
+            setShowNewCampaignForm(false);
+            
+            // Aquí se enviaría la información a la API de Newry
+            console.log('Datos de campaña para enviar a Newry:', data);
+          }}
+        />
       )}
     </div>
   );
